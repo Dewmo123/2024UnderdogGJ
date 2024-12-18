@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.devlab.chipmunklibrary": {
+      "version": "https://github.com/Chipmunk-Rex/Chipmunk-Library.git?path=/ChipmunkLibrary",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fae8cf2b056efdd91d9f307816ba31eae09a6d24"
+    },
     "com.unity.2d.animation": {
       "version": "9.1.0",
       "depth": 1,
@@ -176,6 +183,15 @@
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.9"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.inputsystem": {
+      "version": "1.7.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
