@@ -1275,7 +1275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1985277094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,7 +1291,6 @@ MonoBehaviour:
   jumpPower: 2
   minPower: 1
   maxPower: 10
-  target: {fileID: 1985277099}
   jumpGuideLine: {fileID: 107772038}
 --- !u!212 &1985277095
 SpriteRenderer:

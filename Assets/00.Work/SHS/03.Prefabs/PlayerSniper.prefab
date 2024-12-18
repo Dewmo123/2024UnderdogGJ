@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af1afea9eafbce47a40898d24e5859e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 7380114064944509775}
+  firePoint: {fileID: 0}
   shootDistance: 50
   hitLayer:
     serializedVersion: 2
@@ -160,15 +160,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1.2171162
-      outSlope: -1.2171162
+      inSlope: -1.5000689
+      outSlope: -1.5000689
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.37625372
-      value: 0.5420555
+      time: 0.1
+      value: 0.8499931
       inSlope: -1.4389589
       outSlope: -1.4389589
       tangentMode: 0
@@ -176,15 +176,15 @@ MonoBehaviour:
       inWeight: 0.18524882
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5
+      time: 0.25
       value: 0
-      inSlope: -4.3803782
-      outSlope: -4.3803782
+      inSlope: -5.6666207
+      outSlope: -5.6666207
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  bulletLineFadeOutTime: 0.5
+  bulletLineFadeOutTime: 0.25
