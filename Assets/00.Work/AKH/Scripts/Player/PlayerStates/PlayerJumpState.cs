@@ -23,6 +23,5 @@ public class PlayerJumpState : PlayerCanAttackState
     protected override void HandleMouse()
     {
         base.HandleMouse();
-        _player.GetCompo<PlayerAnimator>().ChangeLayer(1);
     }
 }

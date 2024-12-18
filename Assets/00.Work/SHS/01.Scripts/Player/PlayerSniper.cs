@@ -5,13 +5,14 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(LineRenderer))]
-public class PlayerSniper : MonoBehaviour
+public class PlayerSniper : MonoBehaviour, IPlayerComponent
 {
     [SerializeField] Transform firePoint;
     [SerializeField] float shootDistance = 10f;
     [SerializeField] LayerMask hitLayer;
     [SerializeField] AnimationCurve bulletLineFadeOutCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 0));
     [SerializeField] float bulletLineFadeOutTime = 0.5f;
+    private Player _player;
     private LineRenderer bulletLine;
     void Awake()
     {
@@ -19,6 +20,7 @@ public class PlayerSniper : MonoBehaviour
     }
     public void Shoot(Vector2 dir)
     {
+        Debug.Log("Shoot");
         dir = dir.normalized;
 
         bulletLine.positionCount = 2;
@@ -58,5 +60,10 @@ public class PlayerSniper : MonoBehaviour
             
             yield return null;
         }
+    }
+
+    public void Initialize(Player player)
+    {
+        _player = player;
     }
 }

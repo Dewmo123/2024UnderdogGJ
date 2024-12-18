@@ -10,6 +10,7 @@ public class PlayerWallAimState : PlayerAimState
     public override void Enter()
     {
         base.Enter();
+        _player.GetCompo<PlayerAnimator>().ChangeLayer(2);
         _player.Rigid.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
     }
     public override void Exit()
@@ -17,8 +18,12 @@ public class PlayerWallAimState : PlayerAimState
         base.Exit();
         _player.Rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+    protected override void HandleFlip(Vector3 mousePos)
+    {
+    }
     protected override void HandleMouseCancel()
     {
+        Debug.Log("MouseCancel");
         _stateMachine.ChangeState(PlayerEnum.WallShoot);
     }
 }
