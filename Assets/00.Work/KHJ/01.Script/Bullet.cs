@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private BulletDataSO _bulletData;
     [SerializeField] private float _speed;
     private void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = transform.right * _speed;
+        if (TryGetComponent(out Rigidbody2D rigid))
+            rigid.velocity = transform.right * _bulletData.moveSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Player") || collision.transform.CompareTag("Well"))
+        if (_bulletData.canWellTouched)
         {
-            Destroy(gameObject);
+            if (collision.transform.CompareTag("Well"))
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        if (collision.transform.CompareTag("Player"))
+        {
+            Destroy(gameObject); // 데미지 코드 추가해야함
         }
     }
 }

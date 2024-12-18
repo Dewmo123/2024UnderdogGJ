@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6035231654455582929}
   - component: {fileID: 7832036745127749585}
-  - component: {fileID: 2676813287671717341}
   - component: {fileID: 6787838453011628260}
   - component: {fileID: 201971043414304553}
   - component: {fileID: 5662136171163316751}
   - component: {fileID: 6839752730429074565}
+  - component: {fileID: 1352345841888841208}
   m_Layer: 0
   m_Name: State
   m_TagString: Untagged
@@ -50,22 +50,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Idle: {fileID: 6787838453011628260}
-  Move: {fileID: 2676813287671717341}
+  Move: {fileID: 1352345841888841208}
   Attack: {fileID: 5662136171163316751}
   Death: {fileID: 201971043414304553}
   Hit: {fileID: 6839752730429074565}
---- !u!114 &2676813287671717341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2245265129906759102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cb09721a464a534381052442f31ec9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6787838453011628260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +100,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15c912a375d9cb349ae43463b7be54e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1352345841888841208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2245265129906759102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465f4e75b5fa30547aa3a7a727434dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8786389219707197257
@@ -190,7 +190,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 41
   m_Sprite: {fileID: -670609786, guid: e13bb06bb98c64146b223157a186d030, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.09433961, g: 0.07609469, b: 0.07609469, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 3110449947774074520}
   - component: {fileID: 855913337910776421}
   m_Layer: 0
-  m_Name: LongDeone
+  m_Name: DarkDrone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

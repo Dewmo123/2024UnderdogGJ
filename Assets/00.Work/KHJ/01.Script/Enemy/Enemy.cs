@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public EnemyStateFectory StateCompo { get; protected set; }
     public EnemyState CurrentState;
     public Rigidbody2D RbCompo { get; protected set; }
+    public SpriteRenderer SpriteRenderer { get; protected set; }
 
     public Transform Target;
 
@@ -28,10 +29,14 @@ public class Enemy : MonoBehaviour
         RbCompo = GetComponent<Rigidbody2D>();
         AnimCompo = GetComponentInChildren<EnemyAnimation>();
         StateCompo = GetComponentInChildren<EnemyStateFectory>();
-        StateCompo.InitializeState(this);
         Agent = GetComponentInChildren<NavMeshAgent>();
+        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        StateCompo.InitializeState(this);
         _currentHealth = EnemyData.maxHp;
-       // Target = FindAnyObjectByType<Player>();
+        Agent.speed = EnemyData.moveSpeed;
+        Agent.updateRotation = false;
+        Agent.updateUpAxis = false;
+        // Target = FindAnyObjectByType<Player>();
     }
 
 
@@ -79,9 +84,7 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            print("스페이스");
             TakeDamage(5);
-            print(_currentHealth);
         }
     }
 }

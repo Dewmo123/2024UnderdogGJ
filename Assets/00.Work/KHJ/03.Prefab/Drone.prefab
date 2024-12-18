@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 3110449947774074520}
   - component: {fileID: 855913337910776421}
   m_Layer: 0
-  m_Name: Deone
+  m_Name: Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

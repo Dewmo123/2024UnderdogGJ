@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DroneMoveState : EnemyState
-{ 
+{
     protected override void EnterState()
     {
-        _enemy.Agent.updateRotation = false;
-        _enemy.Agent.updateUpAxis = false;
         _enemy.AnimCompo.PlayAnimaton(AnimationType.run);
     }
 
@@ -25,6 +23,6 @@ public class DroneMoveState : EnemyState
                 return;
             }
         }
-       _enemy.Agent.SetDestination(_enemy.Target.transform.position);
+        _enemy.Agent.SetDestination(_enemy.Target.transform.position);
     }
 }
