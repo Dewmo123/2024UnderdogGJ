@@ -9,6 +9,7 @@ public class JumpGuideLine : MonoBehaviour
     [SerializeField] private float lineLength = 4f;
     [SerializeField] private int vertexCount = 40;
     [SerializeField] AnimationCurve widthCurve = new AnimationCurve(new Keyframe(0, 1f), new Keyframe(1,1f));
+    [SerializeField] LayerMask groundLayer;
     void Awake()
     {
         lineRendererCompo = GetComponent<LineRenderer>();
@@ -33,6 +34,14 @@ public class JumpGuideLine : MonoBehaviour
 
             velocity += gravity * timeStep;
             point += velocity * timeStep;
+
+            RaycastHit2D hit = Physics2D.Raycast(point, velocity, velocity.magnitude * timeStep, groundLayer);
+            if(hit.collider != null)
+            {
+                lineRendererCompo.positionCount = i + 2;
+                lineRendererCompo.SetPosition(i + 1, hit.point);
+                break;
+            }
         }
     }
     [SerializeField] private float power = 10f;
