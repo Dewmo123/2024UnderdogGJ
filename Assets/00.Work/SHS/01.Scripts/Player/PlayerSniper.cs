@@ -17,15 +17,6 @@ public class PlayerSniper : MonoBehaviour
     {
         bulletLine = GetComponent<LineRenderer>();
     }
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 dir = mousePos - firePoint.position;
-            Shoot(dir.normalized);
-        }
-    }
     public void Shoot(Vector2 dir)
     {
         dir = dir.normalized;
@@ -34,8 +25,6 @@ public class PlayerSniper : MonoBehaviour
         bulletLine.SetPosition(0, firePoint.position);
 
         Vector2 endPos = firePoint.position + (Vector3)(dir * shootDistance);
-
-        Debug.Log($"{firePoint.position} {endPos} {dir} {shootDistance}");
 
         RaycastHit2D hit = Physics2D.Raycast(firePoint.position, dir, shootDistance, hitLayer);
         if (hit.collider != null)
