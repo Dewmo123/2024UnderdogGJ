@@ -45,14 +45,15 @@ public class Enemy : MonoBehaviour
         TransitionState(StateCompo.GetState(StateType.Move));
     }
 
-    private void Hit(int a, int b)
+    public void TakeDamage(float damage)
     {
         if (CurrentState == StateCompo.GetState(StateType.Death)) return;
-    }
 
-    private void Death()
-    {
-        TransitionState(StateCompo.GetState(StateType.Death));
+        _currentHealth = Mathf.Clamp(_currentHealth -= damage, 0, EnemyData.maxHp);
+        if (_currentHealth == 0)
+            TransitionState(StateCompo.GetState(StateType.Death));
+        else
+            TransitionState(StateCompo.GetState(StateType.Hit));
     }
 
     public void TransitionState(EnemyState desireState)
@@ -69,6 +70,17 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         CurrentState.StateFixedUpdate();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print("스페이스");
+            TakeDamage(5);
+            print(_currentHealth);
+        }
     }
 }
