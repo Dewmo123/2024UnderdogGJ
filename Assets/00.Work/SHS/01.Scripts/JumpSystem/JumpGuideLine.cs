@@ -17,7 +17,7 @@ public class JumpGuideLine : MonoBehaviour
         lineRendererCompo.positionCount = vertexCount;
         lineRendererCompo.widthCurve = widthCurve;
     }
-    public void DrawGuideLine(Rigidbody2D target, Vector2 dir, float power)
+    public void DrawGuideLine(Rigidbody2D target, Vector2 dir, Vector2 power)
     {
         lineRendererCompo.enabled = true;
 

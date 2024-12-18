@@ -17,4 +17,8 @@ public class PlayerWallAimState : PlayerAimState
         base.Exit();
         _player.Rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+    protected override void HandleMouseCancel()
+    {
+        _stateMachine.ChangeState(PlayerEnum.WallShoot);
+    }
 }
