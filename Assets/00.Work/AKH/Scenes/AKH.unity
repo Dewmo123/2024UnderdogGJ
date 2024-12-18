@@ -212,7 +212,7 @@ Transform:
   m_GameObject: {fileID: 311402846}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 0.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -230,9 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e894f6b1b96f44bbe4657b5b93134d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 3
+  jumpPowerMultiplier: {x: 8, y: 5}
   minPower: 1
-  maxPower: 3
+  maxPower: 2
   jumpGuideLine: {fileID: 712599703}
 --- !u!120 &311402849
 LineRenderer:
@@ -486,11 +486,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2786626991194768405, guid: 470b747bc34fd1c4ab8882c82b0e846d, type: 3}
       propertyPath: vertexCount
-      value: 80
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2786626991194768405, guid: 470b747bc34fd1c4ab8882c82b0e846d, type: 3}
       propertyPath: groundLayer.m_Bits
-      value: 1
+      value: 805306368
       objectReference: {fileID: 0}
     - target: {fileID: 6553729302659090914, guid: 470b747bc34fd1c4ab8882c82b0e846d, type: 3}
       propertyPath: m_Name

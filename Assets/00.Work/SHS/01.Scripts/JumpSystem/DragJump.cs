@@ -9,7 +9,7 @@ public class DragJump : MonoBehaviour, IPlayerComponent
 {
     private Player _player;
 
-    [SerializeField] private float jumpPower = 10f;
+    [SerializeField] private Vector2 jumpPowerMultiplier = new Vector2(5,5);
     [SerializeField] private float minPower = 1f;
     [SerializeField] private float maxPower = 10f;
 
@@ -31,7 +31,7 @@ public class DragJump : MonoBehaviour, IPlayerComponent
     {
         while (true)
         {
-            (Vector2 dir, float distance, float power) = GetJumpInfo(mousePos());
+            (Vector2 dir, float distance, Vector2 power) = GetJumpInfo(mousePos());
 
             jumpGuideLine.DrawGuideLine(target, dir, power);
             DragGuideLine(dir, distance);
@@ -45,7 +45,7 @@ public class DragJump : MonoBehaviour, IPlayerComponent
         dir = dir * -1;
         dragLine.positionCount = 2;
         dragLine.SetPosition(0, transform.position);
-        dragLine.SetPosition(1, transform.position + dir * distance);
+        dragLine.SetPosition(1, transform.position + dir * Mathf.Clamp(distance, minPower, maxPower));
     }
 
     public void DragEnd(Func<Vector2> mousePos)
@@ -53,23 +53,23 @@ public class DragJump : MonoBehaviour, IPlayerComponent
         StopCoroutine(draggCoroutine);
         draggCoroutine = null;
 
-        (Vector2 dir, float distance, float power) = GetJumpInfo(mousePos());
+        (Vector2 dir, float distance, Vector2 power) = GetJumpInfo(mousePos());
 
         Jump(dir, power);
 
         dragLine.enabled = false;
         jumpGuideLine.Disable();
     }
-    private void Jump(Vector2 dir, float power)
+    private void Jump(Vector2 dir, Vector2 power)
     {
         Vector2 forece = dir * power;
         target.AddForce(forece, ForceMode2D.Impulse);
     }
-    public (Vector2, float, float) GetJumpInfo(Vector2 mousePos)
+    public (Vector2, float, Vector2) GetJumpInfo(Vector2 mousePos)
     {
         Vector2 dir = (mousePos - target.position).normalized * -1;
         float distance = Vector2.Distance(mousePos, startDragPos);
-        float power = Mathf.Clamp(distance, minPower, maxPower) * jumpPower;
+        Vector2 power = Mathf.Clamp(distance, minPower, maxPower) * jumpPowerMultiplier;
 
         return (dir, distance, power);
     }

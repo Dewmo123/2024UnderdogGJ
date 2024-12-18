@@ -10,7 +10,8 @@ public class PlayerWallIdleState : PlayerCanJumpState
     public override void Enter()
     {
         base.Enter();
-        _player.GetCompo<PlayerMovement>().HandleSpriteFlip(_player.transform.position + (_player.GetCompo<PlayerMovement>().IsFacingRight() ? Vector3.left : Vector3.right));
+        if (_player.GetCompo<PlayerMovement>().isWall)
+            _player.GetCompo<PlayerMovement>().HandleSpriteFlip(_player.transform.position + (_player.GetCompo<PlayerMovement>().IsFacingRight() ? Vector3.left : Vector3.right));
         _player.Rigid.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
     }
     public override void Exit()

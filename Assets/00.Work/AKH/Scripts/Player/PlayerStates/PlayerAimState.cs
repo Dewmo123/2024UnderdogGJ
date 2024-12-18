@@ -28,7 +28,7 @@ public class PlayerAimState : PlayerState
         Time.timeScale = 1f;
         _input.OnRightCanceled -= HandleMouseCancel;
     }
-    private void HandleMouseCancel()
+    protected virtual void HandleMouseCancel()
     {
         _stateMachine.ChangeState(PlayerEnum.Attack);
     }

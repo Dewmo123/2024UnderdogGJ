@@ -13,6 +13,7 @@ public enum PlayerEnum
     Dead,
     Attack,
     WallAim,
+    WallShoot,
     None
 }
 public abstract class PlayerState

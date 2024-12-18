@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
         _stateMachine.AddState(PlayerEnum.Jump, new PlayerJumpState(_stateMachine, "Jump", this));
         _stateMachine.AddState(PlayerEnum.WallIdle, new PlayerWallIdleState(_stateMachine, "WallIdle", this));
         _stateMachine.AddState(PlayerEnum.WallAim, new PlayerWallAimState(_stateMachine, "WallAim", this));
+        _stateMachine.AddState(PlayerEnum.WallShoot, new PlayerWallAttackState(_stateMachine, "WallShoot", this));
         _stateMachine.Init(PlayerEnum.Idle, this);
         #endregion
     }
