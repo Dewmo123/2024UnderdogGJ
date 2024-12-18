@@ -10,9 +10,14 @@ public class PlayerAttackState : PlayerState
     public override void UpdateState()
     {
         if (_endTriggerCalled && _player.Rigid.velocity != Vector2.zero)
-            _stateMachine.ChangeState(PlayerEnum.Jump);
+            _stateMachine.ChangeState(PlayerEnum.Jump);// Jump∑Œ «ÿ¡‡æﬂ«‘
         else if (_endTriggerCalled)
             _stateMachine.ChangeState(PlayerEnum.Idle);
             
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        _player.GetCompo<PlayerAnimator>().ChangeLayer(0);
     }
 }

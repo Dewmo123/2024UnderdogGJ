@@ -19,7 +19,7 @@ public class PlayerCanAttackState : PlayerState
         _player.GetCompo<InputReader>().OnRightPerform -= HandleMouse;
     }
 
-    private void HandleMouse()
+    protected virtual void HandleMouse()
     {
         _stateMachine.ChangeState(PlayerEnum.Aim);
     }
