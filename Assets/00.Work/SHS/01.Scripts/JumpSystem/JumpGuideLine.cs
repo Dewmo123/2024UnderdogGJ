@@ -10,6 +10,7 @@ public class JumpGuideLine : MonoBehaviour
     [SerializeField] private int vertexCount = 40;
     [SerializeField] AnimationCurve widthCurve = new AnimationCurve(new Keyframe(0, 1f), new Keyframe(1,1f));
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] private Transform _offset;
     void Awake()
     {
         lineRendererCompo = GetComponent<LineRenderer>();
@@ -18,8 +19,10 @@ public class JumpGuideLine : MonoBehaviour
     }
     public void DrawGuideLine(Rigidbody2D target, Vector2 dir, float power)
     {
+        lineRendererCompo.enabled = true;
+
         dir = dir.normalized;
-        Vector2 point = target.position;
+        Vector2 point = _offset.position;
         Vector2 gravity = target.gravityScale * Physics2D.gravity;
         Vector2 velocity = dir * power + target.velocity;
 
@@ -44,14 +47,9 @@ public class JumpGuideLine : MonoBehaviour
             }
         }
     }
-    [SerializeField] private float power = 10f;
-    private void Update()
+    public void Disable()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 mousePos = (Camera.main.ScreenToWorldPoint(Input.mousePosition)).normalized;
-            Debug.Log(mousePos);
-            DrawGuideLine(GetComponent<Rigidbody2D>(), mousePos, power);
-        }
+        lineRendererCompo.enabled = false;
     }
+    [SerializeField] private float power = 10f;
 }
