@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587e171a1695fcd40b5188aa2bed3079, type: 3}
+  m_Name: LongDrone
+  m_EditorClassIdentifier: 
+  maxHp: 20
+  damage: 25
+  moveSpeed: 1
+  attackCool: 5
+  attackRange: 7
+  bullet: {fileID: 6789193623792956212, guid: cd98e2f28fd93bd4183183e098e2b6d8, type: 3}

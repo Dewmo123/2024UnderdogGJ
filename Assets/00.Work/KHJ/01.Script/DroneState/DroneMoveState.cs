@@ -14,10 +14,10 @@ public class DroneMoveState : EnemyState
 
     public override void StateFixedUpdate()
     {
-        float d = Vector2.Distance(transform.position, _enemy.Target.position);
+        float d = Vector2.Distance(transform.position, _enemy.Target.transform.position);
         if (d < _enemy.EnemyData.attackRange)
         {
-            RaycastHit2D ray = Physics2D.Raycast(transform.position, _enemy.Target.position - transform.position, d, _enemy.WellMask);
+            RaycastHit2D ray = Physics2D.Raycast(transform.position, _enemy.Target.transform.position - transform.position, d, _enemy.WellMask);
             if (!ray)
             {
                 _enemy.Agent.SetDestination(transform.position);
@@ -25,6 +25,6 @@ public class DroneMoveState : EnemyState
                 return;
             }
         }
-       _enemy.Agent.SetDestination(_enemy.Target.position);
+       _enemy.Agent.SetDestination(_enemy.Target.transform.position);
     }
 }

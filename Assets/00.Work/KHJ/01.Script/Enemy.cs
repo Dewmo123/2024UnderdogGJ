@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
         StateCompo.InitializeState(this);
         Agent = GetComponentInChildren<NavMeshAgent>();
         _currentHealth = EnemyData.maxHp;
+       // Target = FindAnyObjectByType<Player>();
     }
 
 

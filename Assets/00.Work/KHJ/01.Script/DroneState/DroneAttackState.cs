@@ -18,7 +18,7 @@ public class DroneAttackState : EnemyState
 
     private void PerfromAttack()
     {
-        Vector3 direction = _enemy.Target.position - transform.position;
+        Vector3 direction = _enemy.Target.transform.position - transform.position;
         direction.z = 0;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
