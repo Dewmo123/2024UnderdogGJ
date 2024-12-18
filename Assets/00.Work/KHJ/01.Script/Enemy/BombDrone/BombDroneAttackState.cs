@@ -13,6 +13,12 @@ public class BombDroneAttackState : EnemyState
 
     private void PerfromAttack()
     {
+        StartCoroutine(AttackCoroutine());
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        yield return new WaitForSeconds(1);
         Instantiate(_enemy.EnemyData.bullet.transform, _enemy.transform.position, Quaternion.Euler(0, 0, 0)).GetComponent<Bomb>().PlayBomb();
         Destroy(_enemy.gameObject);
     }

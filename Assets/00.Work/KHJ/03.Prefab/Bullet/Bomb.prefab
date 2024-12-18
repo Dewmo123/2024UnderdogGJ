@@ -123,5 +123,5 @@ MonoBehaviour:
   _speed: 0
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 64
   _range: 2

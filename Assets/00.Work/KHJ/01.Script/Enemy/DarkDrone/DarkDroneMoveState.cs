@@ -26,7 +26,7 @@ public class DarkDroneMoveState : EnemyState
         }
         else
         {
-            _enemy.SpriteRenderer.color = new Color(_enemy.SpriteRenderer.color.r, _enemy.SpriteRenderer.color.g, _enemy.SpriteRenderer.color.b, 0.2f);
+            _enemy.SpriteRenderer.color = new Color(_enemy.SpriteRenderer.color.r, _enemy.SpriteRenderer.color.g, _enemy.SpriteRenderer.color.b, 0f);
         }
         _enemy.Agent.SetDestination(_enemy.Target.transform.position);
     }

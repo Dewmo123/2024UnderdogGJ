@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2676813287671717341}
   - component: {fileID: 6787838453011628260}
   - component: {fileID: 201971043414304553}
-  - component: {fileID: 5662136171163316751}
   - component: {fileID: 6839752730429074565}
+  - component: {fileID: 5165458303242405306}
   m_Layer: 0
   m_Name: State
   m_TagString: Untagged
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Idle: {fileID: 6787838453011628260}
   Move: {fileID: 2676813287671717341}
-  Attack: {fileID: 5662136171163316751}
+  Attack: {fileID: 5165458303242405306}
   Death: {fileID: 201971043414304553}
   Hit: {fileID: 6839752730429074565}
 --- !u!114 &2676813287671717341
@@ -90,18 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1dc0c9972fbed7499caff5124008c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5662136171163316751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2245265129906759102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc0340c169a79514882d022bd0d3a1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6839752730429074565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +100,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15c912a375d9cb349ae43463b7be54e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5165458303242405306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2245265129906759102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72f11684f6d52c3478eb8c75fced494d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8786389219707197257
@@ -143,7 +143,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4490086958069649729}
@@ -190,7 +190,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 41
   m_Sprite: {fileID: -670609786, guid: e13bb06bb98c64146b223157a186d030, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4056604, g: 0.15116592, b: 0.1511659, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 3110449947774074520}
   - component: {fileID: 855913337910776421}
   m_Layer: 0
-  m_Name: Drone
+  m_Name: MiniBombDrone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,14 +285,14 @@ NavMeshAgent:
   m_GameObject: {fileID: 8846260455117423395}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.13
+  m_Radius: 0.01
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 0.24
   m_BaseOffset: 0.13
@@ -312,7 +312,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: {fileID: 0}
   Target: {fileID: 0}
-  EnemyData: {fileID: 11400000, guid: eb74a0ec070d48c4fa44fb7bf6153c26, type: 2}
+  WellMask:
+    serializedVersion: 2
+    m_Bits: 128
+  PlayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  EnemyData: {fileID: 11400000, guid: 4dbe433249d08d54db8f06ad7c66781b, type: 2}
   _reFindTime: 0.5
 --- !u!61 &3110449947774074520
 BoxCollider2D:
@@ -343,10 +349,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13030076, y: 0.011845589}
+  m_Offset: {x: -0.13030076, y: -0.0069004297}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -357,7 +363,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.21819544, y: 0.34454727}
+  m_Size: {x: 0.21819544, y: 0.1633358}
   m_EdgeRadius: 0
 --- !u!50 &855913337910776421
 Rigidbody2D:
