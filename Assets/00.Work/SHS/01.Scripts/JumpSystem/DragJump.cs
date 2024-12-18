@@ -5,37 +5,26 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(LineRenderer))]
-public class DragJump : MonoBehaviour
+public class DragJump : MonoBehaviour, IPlayerComponent
 {
+    private Player _player;
+
     [SerializeField] private float jumpPower = 10f;
     [SerializeField] private float minPower = 1f;
     [SerializeField] private float maxPower = 10f;
-    [SerializeField] Rigidbody2D target;
+
+    private Rigidbody2D target;
 
     private Coroutine draggCoroutine;
     private Vector2 startDragPos => target.position;
 
     [SerializeField] private JumpGuideLine jumpGuideLine;
+    public bool isDrag => draggCoroutine != null;
     private LineRenderer dragLine;
-    void Awake()
-    {
-        dragLine = GetComponent<LineRenderer>();
-    }
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            DragStart(() => Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            DragEnd(() => Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
-    }
-
-    private void DragStart(Func<Vector2> mousePos)
+    public void DragStart(Func<Vector2> mousePos)
     {
         // startDragPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        dragLine.enabled = true;
         draggCoroutine = StartCoroutine(Dragging(mousePos));
     }
     private IEnumerator Dragging(Func<Vector2> mousePos)
@@ -51,21 +40,25 @@ public class DragJump : MonoBehaviour
         }
     }
 
-    private void DragGuideLine(Vector2 dir, float distance)
+    private void DragGuideLine(Vector3 dir, float distance)
     {
         dir = dir * -1;
         dragLine.positionCount = 2;
-        dragLine.SetPosition(0, target.position);
-        dragLine.SetPosition(1, target.position + dir * distance);
+        dragLine.SetPosition(0, transform.position);
+        dragLine.SetPosition(1, transform.position + dir * distance);
     }
 
-    private void DragEnd(Func<Vector2> mousePos)
+    public void DragEnd(Func<Vector2> mousePos)
     {
         StopCoroutine(draggCoroutine);
+        draggCoroutine = null;
 
         (Vector2 dir, float distance, float power) = GetJumpInfo(mousePos());
 
         Jump(dir, power);
+
+        dragLine.enabled = false;
+        jumpGuideLine.Disable();
     }
     private void Jump(Vector2 dir, float power)
     {
@@ -79,5 +72,12 @@ public class DragJump : MonoBehaviour
         float power = Mathf.Clamp(distance, minPower, maxPower) * jumpPower;
 
         return (dir, distance, power);
+    }
+
+    public void Initialize(Player player)
+    {
+        _player = player;
+        target = player.Rigid;
+        dragLine = GetComponent<LineRenderer>();
     }
 }
