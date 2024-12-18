@@ -7,6 +7,7 @@ public class PlayerAnimator : MonoBehaviour, IPlayerComponent
 {
     private Animator _anim;
     private Player _player;
+    private int _beforeLayer = 0;
     public void Initialize(Player player)
     {
         _player = player;
@@ -23,5 +24,11 @@ public class PlayerAnimator : MonoBehaviour, IPlayerComponent
     public void EndTriggerCalled()
     {
         _player.EndTriggerCalled();
+    }
+    public void ChangeLayer(int index)
+    {
+        _anim.SetLayerWeight(index, 1);
+        _anim.SetLayerWeight(_beforeLayer, 0);
+        _beforeLayer = index;
     }
 }

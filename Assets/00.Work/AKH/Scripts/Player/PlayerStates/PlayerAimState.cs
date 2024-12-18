@@ -16,6 +16,12 @@ public class PlayerAimState : PlayerState
         _input = _player.GetCompo<InputReader>();
         _input.OnRightCanceled += HandleMouseCancel;
     }
+    public override void UpdateState()
+    {
+        base.UpdateState();
+        if (_player.GetCompo<PlayerMovement>().isGround)
+            _stateMachine.ChangeState(PlayerEnum.Attack);
+    }
     public override void Exit()
     {
         base.Exit();

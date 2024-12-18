@@ -34,6 +34,10 @@ public class Player : MonoBehaviour
         _stateMachine.AddState(PlayerEnum.Walk, new PlayerWalkState(_stateMachine, "Walk", this));
         _stateMachine.AddState(PlayerEnum.Aim, new PlayerAimState(_stateMachine, "Aim", this));
         _stateMachine.AddState(PlayerEnum.Attack, new PlayerAttackState(_stateMachine, "Attack", this));
+        _stateMachine.AddState(PlayerEnum.Fall, new PlayerFallState(_stateMachine, "Fall", this));
+        _stateMachine.AddState(PlayerEnum.Jump, new PlayerJumpState(_stateMachine, "Jump", this));
+        _stateMachine.AddState(PlayerEnum.WallIdle, new PlayerWallIdleState(_stateMachine, "WallIdle", this));
+        _stateMachine.AddState(PlayerEnum.WallAim, new PlayerWallAimState(_stateMachine, "WallAim", this));
         _stateMachine.Init(PlayerEnum.Idle, this);
         #endregion
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum PlayerEnum
 {
+    WallIdle,
     Idle,
     Walk,
     Jump,
@@ -11,6 +12,7 @@ public enum PlayerEnum
     Fall,
     Dead,
     Attack,
+    WallAim,
     None
 }
 public abstract class PlayerState
