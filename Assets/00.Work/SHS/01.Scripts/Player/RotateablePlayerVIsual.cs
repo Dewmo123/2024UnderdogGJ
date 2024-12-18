@@ -21,7 +21,6 @@ public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
 
     public void Rotate(float angle)
     {
-        Debug.Log(angle);
         angle = Mathf.Clamp(angle, -minAngle, maxAngle);
         upperBody.localRotation = Quaternion.Euler(0, 0, angle);
 
@@ -31,7 +30,6 @@ public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
     public void ReverseRotate(float angle)
     {
         angle = ReverseAngle(angle);
-        Debug.Log(angle);
 
         angle = Mathf.Clamp(angle, -minAngle, maxAngle);
         upperBody.localRotation = Quaternion.Euler(0, 0, angle);
