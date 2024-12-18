@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,12 +16,13 @@ public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
     {
         _player = player;
         gameObject.SetActive(false);
-        
+
     }
-    
+
     public void Rotate(float angle)
     {
-        angle = Mathf.Clamp(angle, -maxAngle, minAngle);
+        Debug.Log(angle);
+        angle = Mathf.Clamp(angle, -minAngle, maxAngle);
         upperBody.localRotation = Quaternion.Euler(0, 0, angle);
 
         upperBody.localPosition = offset;
@@ -28,11 +30,19 @@ public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
     }
     public void ReverseRotate(float angle)
     {
-        angle = Mathf.Clamp(angle, -(180-maxAngle), 180-minAngle);
+        angle = ReverseAngle(angle);
+        Debug.Log(angle);
+
+        angle = Mathf.Clamp(angle, -minAngle, maxAngle);
         upperBody.localRotation = Quaternion.Euler(0, 0, angle);
 
         upperBody.localPosition = offset;
         upperBodyVisual.localPosition = -offset;
+    }
+
+    private float ReverseAngle(float angle)
+    {
+        return angle > 0 ? 180 - angle : -180 - angle;
     }
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
