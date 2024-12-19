@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     private Rigidbody2D _rb;
     [SerializeField] private Transform _groundChker;
     [SerializeField] private Transform _wallChker;
+    [SerializeField] private Transform _wallChker2;
     [SerializeField] private Vector2 _groundCheckerSize;
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private LayerMask _wallLayer;
@@ -37,11 +38,11 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     }
     private void CheckWall()
     {
-        isWall = Physics2D.Raycast(_wallChker.position, IsFacingRight() ? Vector3.right : Vector3.left, 0.3f, _wallLayer);
+        isWall = Physics2D.Raycast(_wallChker.position, IsFacingRight() ? Vector3.right : Vector3.left, 0.05f, _wallLayer);
     }
     public bool ReverseWallCheck()
     {
-        return Physics2D.Raycast(_wallChker.position, IsFacingRight() ? Vector3.left : Vector3.right, 1, _wallLayer);
+        return Physics2D.Raycast(_wallChker2.position, IsFacingRight() ? Vector3.left : Vector3.right, 0.05F, _wallLayer);
     }
     #region
     public bool IsFacingRight()
@@ -69,7 +70,8 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
         Gizmos.DrawWireCube(_groundChker.position, _groundCheckerSize);
         Gizmos.color = Color.red;
         Gizmos.DrawRay(new Ray(_wallChker.position, IsFacingRight() ? Vector3.right : Vector3.left));
-        Gizmos.DrawRay(new Ray(_wallChker.position, IsFacingRight() ? Vector3.left : Vector3.right));
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(new Ray(_wallChker2.position, IsFacingRight() ? Vector3.left : Vector3.right));
     }
 #endif
 }
