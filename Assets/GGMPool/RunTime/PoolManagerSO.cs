@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-
+using Chipmunk.Library;
 namespace GGMPool
 {
-    [CreateAssetMenu (menuName = "SO/Pool/Manager")]
+    [CreateAssetMenu(menuName = "SO/Pool/Manager")]
     public class PoolManagerSO : ScriptableSingleton<PoolManagerSO>
     {
         public List<PoolingItemSO> poolingItemList;
@@ -18,7 +17,7 @@ namespace GGMPool
             _rootTrm = root;
             _pools = new Dictionary<PoolTypeSO, Pool>();
 
-            foreach(var item in poolingItemList)
+            foreach (var item in poolingItemList)
             {
                 IPoolable poolable = item.prefab.GetComponent<IPoolable>();
                 Debug.Assert(poolable != null, $"Poolitem does not have IPoolable {item.prefab.name}");
@@ -30,7 +29,7 @@ namespace GGMPool
 
         public IPoolable Pop(PoolTypeSO type)
         {
-            if(_pools.TryGetValue(type, out Pool pool))
+            if (_pools.TryGetValue(type, out Pool pool))
             {
                 return pool.Pop();
             }
@@ -39,7 +38,7 @@ namespace GGMPool
 
         public void Push(IPoolable item)
         {
-            if(_pools.TryGetValue(item.PoolType, out Pool pool))
+            if (_pools.TryGetValue(item.PoolType, out Pool pool))
             {
                 pool.Push(item);
             }
