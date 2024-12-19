@@ -12,6 +12,7 @@ public class Score : MonoBehaviour
             {
                 GameManager.Instance.SetScore(25);
                 player.GetCompo<PlayerHealth>().ChangeValue(25);
+                CreateScorePoint.Instance.PosChange();
             }
         }
     }
