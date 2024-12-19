@@ -15,6 +15,11 @@ public class PlayerFallState : PlayerCanAttackState
         if (_player.GetCompo<PlayerMovement>().isWall)
             _stateMachine.ChangeState(PlayerEnum.WallIdle); 
     }
+    public override void Exit()
+    {
+        base.Exit();
+        _player.GetCompo<AgentVFX>().ToggleAfterImage(false);
+    }
     protected override void HandleMouse()
     {
         base.HandleMouse();
