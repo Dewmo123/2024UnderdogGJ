@@ -239,7 +239,7 @@ MonoBehaviour:
   shootDistance: 100
   hitLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 268435584
 --- !u!120 &194782632
 LineRenderer:
   serializedVersion: 2
@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 535273761585302735, guid: a6e4c4b67e7fed24d9719e017cb17ddb, type: 3}
       propertyPath: enemyLayer.m_Bits
-      value: 0
+      value: 134217728
       objectReference: {fileID: 0}
     - target: {fileID: 535273761585302735, guid: a6e4c4b67e7fed24d9719e017cb17ddb, type: 3}
       propertyPath: groundLayer.m_Bits
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 462766947}
   - component: {fileID: 462766946}
   - component: {fileID: 462766945}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1553,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: fe8a6ac42e3e6db49b7d04129f7ef11b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2581,6 +2581,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HPbar
       objectReference: {fileID: 0}
+    - target: {fileID: 4027962338890532709, guid: cf4facff2519bc84c82795452c6b3676, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 960
+      objectReference: {fileID: 0}
     - target: {fileID: 5118000524838290810, guid: cf4facff2519bc84c82795452c6b3676, type: 3}
       propertyPath: _player
       value: 
@@ -2664,6 +2668,10 @@ PrefabInstance:
     - target: {fileID: 5296960043631415153, guid: cf4facff2519bc84c82795452c6b3676, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6550352425265598494, guid: cf4facff2519bc84c82795452c6b3676, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -960
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2750,7 +2758,7 @@ GameObject:
   - component: {fileID: 1872377128}
   - component: {fileID: 1872377127}
   - component: {fileID: 1872377126}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

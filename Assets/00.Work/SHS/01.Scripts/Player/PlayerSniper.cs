@@ -49,7 +49,7 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
         foreach(var item in ray)
         {
             Debug.Log("hit");
-            if (hit.collider.TryGetComponent<IPlayerSniperHitable>(out var hitable))
+            if (item.collider.TryGetComponent<IPlayerSniperHitable>(out var hitable))
                 hitable.OnHit();
         }
 

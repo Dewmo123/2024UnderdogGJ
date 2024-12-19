@@ -21,6 +21,8 @@ public class PlayerWallIdleState : PlayerCanJumpState
     }
     protected override void HandleMouse()
     {
+        if (_player.GetCompo<PlayerSniper>().isCoolTime)
+            return;
         _stateMachine.ChangeState(PlayerEnum.WallAim);
     }
 }

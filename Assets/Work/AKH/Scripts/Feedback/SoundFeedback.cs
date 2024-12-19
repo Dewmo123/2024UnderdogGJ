@@ -16,6 +16,5 @@ public class SoundFeedback : Feedback
 
     public override void StopFeedback()
     {
-        Debug.LogWarning("SoundFeedback: 응 아니야");
     }
 }

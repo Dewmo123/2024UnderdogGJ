@@ -46,7 +46,24 @@ public class Player : MonoBehaviour
         _stateMachine.AddState(PlayerEnum.WallShoot, new PlayerWallAttackState(_stateMachine, "WallShoot", this));
         _stateMachine.Init(PlayerEnum.Idle, this);
         #endregion
+        GetCompo<PlayerHealth>().OnHealthDec += HandleHealthChanged;
     }
+    private void OnDestroy()
+    {
+        GetCompo<PlayerHealth>().OnHealthDec -= HandleHealthChanged;
+    }
+    private void HandleHealthChanged(int val)
+    {
+        StartCoroutine(RecoverShader());
+    }
+    private IEnumerator RecoverShader()
+    {
+        GetCompo<PlayerAnimator>().Renderer.material.SetFloat("_Value", 1);
+        yield return new WaitForSeconds(0.2f);
+        GetCompo<PlayerAnimator>().Renderer.material.SetFloat("_Value", 0);
+    }
+
+
     private void Update()
     {
         _stateMachine.currentState.UpdateState();

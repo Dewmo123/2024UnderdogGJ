@@ -21,6 +21,8 @@ public class PlayerCanAttackState : PlayerState
 
     protected virtual void HandleMouse()
     {
+        if (_player.GetCompo<PlayerSniper>().isCoolTime)
+            return;
         _stateMachine.ChangeState(PlayerEnum.Aim);
     }
 }

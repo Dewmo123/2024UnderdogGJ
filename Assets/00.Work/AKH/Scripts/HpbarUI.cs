@@ -16,12 +16,16 @@ public class HpbarUI : MonoBehaviour
     private void Start()
     {
         _health = _player.GetCompo<PlayerHealth>();
-        _health.OnHealthChanged += HandleHitEvnet;
+        _health.OnHealthDec += HandleHitEvnet;
     }
-    private void HandleHitEvnet()
+    private void HandleHitEvnet(int a)
     {
         _hpPivot.localScale = new Vector3(_health.HpRatio,1);
         _lastHitTime = Time.time;
+    }
+    private void OnDestroy()
+    {
+        _health.OnHealthDec -= HandleHitEvnet;
     }
     private void Update()
     {

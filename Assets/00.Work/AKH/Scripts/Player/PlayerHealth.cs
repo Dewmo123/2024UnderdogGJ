@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerComponent
     private Player _player;
     [SerializeField] private int _maxHealth;
     [SerializeField] private NotifyValue<int> _curHealth;
-    public event Action OnHealthChanged;
+    public event Action<int> OnHealthDec;
 
     public float HpRatio => (float)_curHealth.Value / _maxHealth;
 
@@ -20,13 +20,13 @@ public class PlayerHealth : MonoBehaviour, IPlayerComponent
     }
     private void HandleHealthChanged(int prev, int next)
     {
-        OnHealthChanged?.Invoke();
+        OnHealthDec?.Invoke(next);
         if (next == 0)
         {
             //Á×¾úÀ»¶§
         }
-    }
 
+    }
     public void ChangeValue(int val)
     {
         _curHealth.Value = Mathf.Clamp(_curHealth.Value + val, 0, _maxHealth);
