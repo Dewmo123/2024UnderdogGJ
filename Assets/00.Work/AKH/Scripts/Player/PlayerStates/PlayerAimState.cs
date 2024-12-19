@@ -30,7 +30,7 @@ public class PlayerAimState : PlayerState
         else
             _anim.ChangeLayer(0);
 
-        Time.timeScale = 0.5f;
+        Time.timeScale = 0.3f;
         _player.OnTimeSlow?.Invoke();
 
         _input = _player.GetCompo<InputReader>();
@@ -44,6 +44,9 @@ public class PlayerAimState : PlayerState
         HandleFlip(mousePos);
 
         float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        Vector3 bulletDir = mousePos - _player.FirePoint.position;
+        _player.GetCompo<BulletLine>().DrawLine(bulletDir);
+
         if (_movement.IsFacingRight())
             _visual.Rotate(rotation);
         else
@@ -59,6 +62,7 @@ public class PlayerAimState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        Time.timeScale = 1;
         _input.OnRightCanceled -= HandleMouseCancel;
     }
     protected virtual void HandleMouseCancel()

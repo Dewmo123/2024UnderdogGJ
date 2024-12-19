@@ -24,6 +24,7 @@ public class PlayerWallAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        _player.OnTimeRecover?.Invoke();
         _player.GetCompo<PlayerAnimator>().ChangeLayer(0);
         _player.GetCompo<RotateablePlayerVIsual>().gameObject.SetActive(false);
         _player.GetCompo<PlayerAnimator>().Renderer.enabled = true;

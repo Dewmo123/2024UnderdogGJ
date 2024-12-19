@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LongBullet
   m_EditorClassIdentifier: 
   damage: 25
-  moveSpeed: 20
+  moveSpeed: 3.2
   canWellTouched: 0

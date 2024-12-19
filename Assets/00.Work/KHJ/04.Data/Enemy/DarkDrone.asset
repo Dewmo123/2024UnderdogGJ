@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DarkDrone
   m_EditorClassIdentifier: 
   maxHp: 10
-  damage: 15
+  damage: 0
   moveSpeed: 0.5
   attackCool: 3
   attackRange: 3.5

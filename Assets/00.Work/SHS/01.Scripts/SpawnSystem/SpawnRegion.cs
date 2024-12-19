@@ -7,10 +7,14 @@ public class SpawnRegion : MonoBehaviour
 {
     private PolygonCollider2D regionCollider;
     [SerializeField] private SpawnTableSO spawnTable;
+    private float _maxTime = 3;
+    private float _curTime;
+    private int _spawnCount = 3;
     void Awake()
     {
         regionCollider = GetComponent<PolygonCollider2D>();
     }
+    
     [ContextMenu("Spawn Object")]
     public GameObject SpawnObject()
     {

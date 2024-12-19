@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MiniBombDrone
   m_EditorClassIdentifier: 
   maxHp: 5
-  damage: 10
+  damage: 0
   moveSpeed: 6
   attackCool: 0
   attackRange: 0.8
