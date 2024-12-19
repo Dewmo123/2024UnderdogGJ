@@ -33,6 +33,7 @@ public class PlayerAimState : PlayerState
         Time.timeScale = 0.3f;
         _player.OnTimeSlow?.Invoke();
 
+        _player.GetCompo<BulletLine>().EnableLine();
         _input = _player.GetCompo<InputReader>();
         _input.OnRightCanceled += HandleMouseCancel;
     }
@@ -80,6 +81,7 @@ public class PlayerAimState : PlayerState
     }
     protected virtual void HandleMouseCancel()
     {
+        _player.GetCompo<BulletLine>().DisableLine();
         _stateMachine.ChangeState(PlayerEnum.Attack);
     }
 }
