@@ -12,6 +12,8 @@ public class Player : MonoBehaviour, IHittable
     [Header("Settings")]
     public float moveSpeed = 5f;
     public float jumpPower = 7f;
+    public float recoilPower = 8f;
+    public bool isArrow = true;
     #endregion
     #region Components
     public Rigidbody2D Rigid { get; private set; }
@@ -92,7 +94,10 @@ public class Player : MonoBehaviour, IHittable
     {
         GetCompo<PlayerHealth>().ChangeValue(-damage);
     }
-
+    public void ToggleArrow()
+    {
+        isArrow = !isArrow;
+    }
     public void Dead()
     {
         _stateMachine.ChangeState(PlayerEnum.Dead);

@@ -42,6 +42,7 @@ public class PlayerAnimator : MonoBehaviour, IPlayerComponent
     {
         float angle = _player.GetCompo<RotateablePlayerVIsual>().Angle;
         Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+        _player.Rigid.AddForce(-dir*_player.recoilPower, ForceMode2D.Impulse);
         _player.GetCompo<PlayerSniper>().Shoot(dir);
     }
     public void Walk()

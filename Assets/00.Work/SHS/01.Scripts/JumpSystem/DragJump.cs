@@ -9,7 +9,7 @@ public class DragJump : MonoBehaviour, IPlayerComponent
 {
     private Player _player;
 
-    [SerializeField] private Vector2 jumpPowerMultiplier = new Vector2(5,5);
+    [SerializeField] private Vector2 jumpPowerMultiplier = new Vector2(5, 5);
     [SerializeField] private float minPower = 1f;
     [SerializeField] private float maxPower = 10f;
 
@@ -43,11 +43,34 @@ public class DragJump : MonoBehaviour, IPlayerComponent
     private void DragGuideLine(Vector3 dir, float distance)
     {
         dir = dir * -1;
-        dragLine.positionCount = 2;
-        dragLine.SetPosition(0, transform.position);
-        dragLine.SetPosition(1, transform.position + dir * Mathf.Clamp(distance, minPower, maxPower));
+        if (_player.isArrow)
+            DrawArrow(transform.position + dir * Mathf.Clamp(distance, minPower, maxPower));
+        else
+        {
+            dragLine.positionCount = 2;
+            dragLine.SetPosition(0, transform.position);
+            dragLine.SetPosition(1, transform.position + dir * Mathf.Clamp(distance, minPower, maxPower));
+        }
     }
+    public void DrawArrow(Vector3 pointer)
+    {
+        float arrowheadSize = 1;
+        //pointer.y = transform.position.y;
 
+        float percentSize = (float)(arrowheadSize / Vector3.Distance(transform.position, pointer));
+        dragLine.positionCount = 4;
+        dragLine.SetPosition(0, transform.position);
+        dragLine.SetPosition(1, Vector3.Lerp(transform.position, pointer, 0.999f - percentSize));
+        dragLine.SetPosition(2, Vector3.Lerp(transform.position, pointer, 1 - percentSize));
+        dragLine.SetPosition(3, pointer);
+        dragLine.widthCurve = new AnimationCurve(
+
+        new Keyframe(0, 0.4f),
+        new Keyframe(0.999f - percentSize, 0.4f),
+        new Keyframe(1 - percentSize, 1f),
+        new Keyframe(1 - percentSize, 1f),
+        new Keyframe(1, 0f));
+    }
     public void DragEnd(Func<Vector2> mousePos)
     {
         StopCoroutine(draggCoroutine);
