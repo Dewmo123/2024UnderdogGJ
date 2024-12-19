@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class Player : MonoBehaviour
     #region Components
     public Rigidbody2D Rigid { get; private set; }
     #endregion
+    public UnityEvent OnTimeSlow;
+    public UnityEvent OnTimeRecover;
+
+    public Transform FirePoint;
+
     private PlayerStateMachine _stateMachine;
     private Dictionary<Type, IPlayerComponent> _components;
     [SerializeField] private InputReader _inputReader;

@@ -40,7 +40,7 @@ public class PlayerAnimator : MonoBehaviour, IPlayerComponent
     }
     public void Attack()
     {
-        _player.GetCompo<PlayerSniper>().Shoot(_player.GetCompo<InputReader>().MouseWorldPos - (Vector2)transform.position);
+        _player.GetCompo<PlayerSniper>().Shoot(_player.GetCompo<InputReader>().MouseWorldPos - (Vector2)_player.FirePoint.position);
     }
     public void ChangeLayer(int index)
     {
