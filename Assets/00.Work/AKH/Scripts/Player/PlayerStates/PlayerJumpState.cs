@@ -20,7 +20,7 @@ public class PlayerJumpState : PlayerCanAttackState
             _stateMachine.ChangeState(PlayerEnum.Fall);
         if (_player.GetCompo<PlayerMovement>().isWall)
         {
-            //_player.GetCompo<AgentVFX>().ToggleAfterImage(false);
+            _player.GetCompo<AgentVFX>().ToggleAfterImage(false);
             _stateMachine.ChangeState(PlayerEnum.WallIdle);
         }
     }

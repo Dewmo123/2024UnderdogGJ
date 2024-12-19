@@ -29,7 +29,6 @@ public class AfterImage : MonoBehaviour, IPoolable
         _spriteRenderer.sprite = spirte;
         transform.position = position;
         transform.localScale = new Vector3(isFlip ? -1 : 1, 1, 1);
-        Debug.Log(angle);
         if (angle == 0)
         {
             _upperSpriteRenderer.enabled = false;
