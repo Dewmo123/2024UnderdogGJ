@@ -7,6 +7,12 @@ public class Bomb : Bullet
     [SerializeField] private LayerMask _targetLayer;
     [SerializeField] private float _range;
 
+    float _currentTimel;
+    float _destroyTime = 8;
+
+    
+
+
     public void PlayBomb()
     {
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, _range, _targetLayer);
@@ -14,7 +20,7 @@ public class Bomb : Bullet
         {
             foreach (Collider2D target in targets)
             {
-                if (TryGetComponent(out IHittable item))
+                if (target.TryGetComponent(out IHittable item))
                     item.OnHit(_bulletData.damage);
             }
         }
