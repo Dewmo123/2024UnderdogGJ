@@ -10,7 +10,15 @@ public class Bullet : MonoBehaviour
     {
         if (TryGetComponent(out Rigidbody2D rigid))
             rigid.velocity = transform.right * _bulletData.moveSpeed;
+
     }
+
+    private IEnumerator DestroyBulletCoroutine()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,8 +35,8 @@ public class Bullet : MonoBehaviour
             if (collision.TryGetComponent(out IHittable hit))
             {
                 hit.OnHit(_bulletData.damage);
+                Destroy(gameObject);
             }
-            Destroy(gameObject); // 데미지 코드 추가해야함
         }
     }
 }

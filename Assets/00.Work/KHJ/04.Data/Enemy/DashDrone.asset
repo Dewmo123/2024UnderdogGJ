@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DashDrone
   m_EditorClassIdentifier: 
   maxHp: 1
-  damage: 25
+  damage: 7
   moveSpeed: 1.3
   attackCool: 0.5
   attackRange: 3

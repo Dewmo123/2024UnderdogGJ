@@ -9,11 +9,15 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private List<SpawnRegion> _spawnRegions;
 
     private float _currentTime;
-    private float _maxTime = 9;
+    private float _maxTime = 10;
 
     private void Start()
     {
         SaveAllData();
+        for (int i = 0; 3 < i; i++)
+        {
+            _spawnRegions[Random.Range(0, _spawnRegions.Count)].SpawnObject();
+        }
     }
 
     private void Update()
@@ -24,6 +28,7 @@ public class GameManager : MonoSingleton<GameManager>
             _spawnRegions[Random.Range(0, _spawnRegions.Count)].SpawnObject();
             ChangeStat(1);
             _currentTime = 0;
+            _maxTime -= 0.05f;
         }
     }
 
