@@ -74,7 +74,7 @@ public class PoolEditorWindow : EditorWindow
         if(_currentItem == item)
         {
             _currentItem = null;
-            //³ªÁß¿¡ ÀÎ½ºÆåÅÍµµ Å¬¸®¾îÇÑ´Ù.
+            //ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½Î½ï¿½ï¿½ï¿½ï¿½Íµï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
         }
 
         GeneratePoolingItemUI();
@@ -122,7 +122,7 @@ public class PoolEditorWindow : EditorWindow
         EditorUtility.SetDirty(target.poolType);
         AssetDatabase.SaveAssets();
 
-        GeneratePoolingItemUI(); //´Ù½Ã ±×·Á
+        GeneratePoolingItemUI(); //ï¿½Ù½ï¿½ ï¿½×·ï¿½
     }
 
     private void HandleCreateItem()
@@ -150,7 +150,7 @@ public class PoolEditorWindow : EditorWindow
         EditorUtility.SetDirty(_poolManager);
         AssetDatabase.SaveAssets();
 
-        GeneratePoolingItemUI(); //È£ÃâÇØ¼­ ¸¸µé¾îÁø°Ô ±×·ÁÁö°Ô ÇÏ¸é µÈ´Ù.
+        GeneratePoolingItemUI(); //È£ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½È´ï¿½.
     }
 
     private void CreateFolderIfNotExist(string fullPath)
