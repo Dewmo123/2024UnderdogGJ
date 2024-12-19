@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00.Work/AKH/Scenes/AKH.unity
-    guid: 79724a1e77397e049a57fe1d1b463e86
+    path: Assets/00.Work/AKH/Scenes/StartScene.unity
+    guid: ba367fa5a6f84ab4cb304d69a4bd7fba
+  - enabled: 1
+    path: Assets/00.Work/KHJ/KHJ.unity
+    guid: ecd590110726f634d80a4c6c2313db0e
   m_configObjects: {}

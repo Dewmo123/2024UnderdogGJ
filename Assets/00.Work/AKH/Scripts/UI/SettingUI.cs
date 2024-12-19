@@ -14,10 +14,12 @@ public class SettingUI : MonoBehaviour
     private Dictionary<string, Slider> _sliders = new Dictionary<string, Slider>();
 
     private Transform _ui;
+    [SerializeField] private bool _isStartScene = false;
     private Player _player;
     private void Awake()
     {
-        _player = FindObjectOfType<Player>();
+        if (!_isStartScene)
+            _player = FindObjectOfType<Player>();
         _ui = transform.GetChild(0);
         Slider[] sliders = GetComponentsInChildren<Slider>();
         sliders.ToList().ForEach(item =>
@@ -31,11 +33,13 @@ public class SettingUI : MonoBehaviour
     }
     private void Start()
     {
-        _player.GetCompo<InputReader>().OnEsc += Show;
+        if (!_isStartScene)
+            _player.GetCompo<InputReader>().OnEsc += Show;
     }
     private void OnDestroy()
     {
-        _player.GetCompo<InputReader>().OnEsc -= Show;
+        if (!_isStartScene)
+            _player.GetCompo<InputReader>().OnEsc -= Show;
     }
     public void Show()
     {
