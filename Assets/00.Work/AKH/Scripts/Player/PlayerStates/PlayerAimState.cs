@@ -24,11 +24,15 @@ public class PlayerAimState : PlayerState
         _anim.Renderer.enabled = false;
         _anim.ExitAnimation(_animBoolHash);
         _anim.ChangeAnimator(_visual.Anim);
+
         if (_player.Rigid.velocity != Vector2.zero)
             _anim.ChangeLayer(1);
         else
             _anim.ChangeLayer(0);
+
         Time.timeScale = 0.5f;
+        _player.OnTimeSlow?.Invoke();
+
         _input = _player.GetCompo<InputReader>();
         _input.OnRightCanceled += HandleMouseCancel;
     }
@@ -55,7 +59,6 @@ public class PlayerAimState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        Time.timeScale = 1f;
         _input.OnRightCanceled -= HandleMouseCancel;
     }
     protected virtual void HandleMouseCancel()

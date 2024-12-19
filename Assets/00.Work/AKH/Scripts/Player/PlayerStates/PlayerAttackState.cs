@@ -22,6 +22,8 @@ public class PlayerAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        Time.timeScale = 1f;
+        _player.OnTimeRecover?.Invoke();
         _player.GetCompo<RotateablePlayerVIsual>().gameObject.SetActive(false);
         _player.GetCompo<PlayerAnimator>().Renderer.enabled = true;
         _player.GetCompo<PlayerAnimator>().ChangeAnimator(null, true);

@@ -20,6 +20,8 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
     [SerializeField] private float _curCool;
 
     public bool isCoolTime { get; private set; }
+    public float Ratio => _curCool / _shootCool;
+
     [SerializeField] UnityEvent onShoot;
     [SerializeField] UnityEvent onCoolTime;
     public void Shoot(Vector2 dir)
