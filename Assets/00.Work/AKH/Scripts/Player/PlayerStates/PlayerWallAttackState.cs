@@ -10,6 +10,8 @@ public class PlayerWallAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        Time.timeScale = 1;
+        _player.OnTimeRecover?.Invoke();
         _player.Rigid.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
     }
     public override void UpdateState()

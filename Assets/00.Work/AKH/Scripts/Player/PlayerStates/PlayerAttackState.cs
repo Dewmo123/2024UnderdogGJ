@@ -10,6 +10,8 @@ public class PlayerAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        Time.timeScale = 1;
+        _player.OnTimeRecover?.Invoke();
     }
     public override void UpdateState()
     {
@@ -22,7 +24,6 @@ public class PlayerAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        _player.OnTimeRecover?.Invoke();
         _player.GetCompo<RotateablePlayerVIsual>().gameObject.SetActive(false);
         _player.GetCompo<PlayerAnimator>().Renderer.enabled = true;
         _player.GetCompo<PlayerAnimator>().ChangeAnimator(null, true);
