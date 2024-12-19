@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6787838453011628260}
   - component: {fileID: 201971043414304553}
   - component: {fileID: 5662136171163316751}
-  - component: {fileID: 6839752730429074565}
   m_Layer: 0
   m_Name: State
   m_TagString: Untagged
@@ -53,7 +52,6 @@ MonoBehaviour:
   Move: {fileID: 2676813287671717341}
   Attack: {fileID: 5662136171163316751}
   Death: {fileID: 201971043414304553}
-  Hit: {fileID: 6839752730429074565}
 --- !u!114 &2676813287671717341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,18 +98,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc0340c169a79514882d022bd0d3a1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6839752730429074565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2245265129906759102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c912a375d9cb349ae43463b7be54e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8786389219707197257
@@ -233,10 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f6878dfe183be428438fd04cd94649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnAnimationEnd:
+  OnDeathAnimationAction:
     m_PersistentCalls:
       m_Calls: []
-  OnAnimationAction:
+  OnAttackAnimationAction:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &8846260455117423395

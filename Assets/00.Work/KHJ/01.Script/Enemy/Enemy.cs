@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, ISpawnable,IHittable
 {
+    public UnityEvent OnDeath;
+    public UnityEvent OnAttack;
+
     public EnemyAnimation AnimCompo { get; protected set; }
     public EnemyStateFactory StateCompo { get; protected set; }
     public EnemyState CurrentState;
@@ -20,7 +24,6 @@ public class Enemy : MonoBehaviour, ISpawnable,IHittable
 
     [SerializeField] private float _reFindTime = 0.5f;
 
-    private float _currentHealth;
 
 
     private void Awake()
@@ -31,7 +34,6 @@ public class Enemy : MonoBehaviour, ISpawnable,IHittable
         Agent = GetComponentInChildren<NavMeshAgent>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         StateCompo.InitializeState(this);
-        _currentHealth = EnemyData.maxHp;
         Agent.speed = EnemyData.moveSpeed;
         Agent.updateRotation = false;
         Agent.updateUpAxis = false;
@@ -53,13 +55,8 @@ public class Enemy : MonoBehaviour, ISpawnable,IHittable
 
     public void TakeDamage(float damage)
     {
-        if (CurrentState == StateCompo.GetState(StateType.Death)) return;
-
-        _currentHealth = Mathf.Clamp(_currentHealth -= damage, 0, EnemyData.maxHp);
-        if (_currentHealth == 0)
+        if (CurrentState == StateCompo.GetState(StateType.Death))
             TransitionState(StateCompo.GetState(StateType.Death));
-        else
-            TransitionState(StateCompo.GetState(StateType.Hit));
     }
 
     public void TransitionState(EnemyState desireState)

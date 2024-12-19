@@ -8,9 +8,8 @@ public class EnemyAnimation : MonoBehaviour
     public Animator Animator { get; private set; }
 
 
-
-    public UnityEvent OnAnimationEnd;
-    public UnityEvent OnAnimationAction;
+    public UnityEvent OnAttackAnimationEnd;
+    public UnityEvent OnAttackAnimationAction;
     private void Awake()
     {
         Animator = GetComponent<Animator>();
@@ -51,20 +50,14 @@ public class EnemyAnimation : MonoBehaviour
         }
     }
 
-    internal void InvokeAnimationAction() // 애니메이션 액션시 호출
+    internal void InvokeAnimationAttack() // 애니메이션 액션시 호출
     {
-        OnAnimationAction?.Invoke();
-    }
-
-    internal void InvokeAnimationEnd() // 애니메이션 끝나면 호출A
-    {
-        OnAnimationEnd?.Invoke(); // 이벤트
+        OnAttackAnimationAction?.Invoke();
     }
 
     public void ResetEvent()
     {
-        OnAnimationAction.RemoveAllListeners();
-        OnAnimationEnd.RemoveAllListeners();
+        OnAttackAnimationAction.RemoveAllListeners();
     }
 }
 public enum AnimationType
