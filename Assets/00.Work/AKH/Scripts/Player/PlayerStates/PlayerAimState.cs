@@ -30,8 +30,11 @@ public class PlayerAimState : PlayerState
         else
             _anim.ChangeLayer(0);
 
-        Time.timeScale = 0.3f;
-        _player.OnTimeSlow?.Invoke();
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0.3f;
+            _player.OnTimeSlow?.Invoke();
+        }
 
         _player.GetCompo<BulletLine>().EnableLine();
         _input = _player.GetCompo<InputReader>();
@@ -76,7 +79,6 @@ public class PlayerAimState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        Time.timeScale = 1;
         _input.OnRightCanceled -= HandleMouseCancel;
     }
     protected virtual void HandleMouseCancel()

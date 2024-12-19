@@ -18,3 +18,4 @@ MonoBehaviour:
   attackCool: 5
   attackRange: 12
   bullet: {fileID: 0}
+  score: 6

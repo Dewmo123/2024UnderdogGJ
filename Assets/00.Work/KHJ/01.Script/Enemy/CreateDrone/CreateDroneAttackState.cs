@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class CreateDroneAttackState : EnemyState
 {
+
+
     private float _createCoolTime = 0.3f;
-    private float _createCount = 4;
+    private float _createCount = 2;
 
     protected override void EnterState()
     {
@@ -18,6 +20,7 @@ public class CreateDroneAttackState : EnemyState
         {
             yield return new WaitForSeconds(_createCoolTime);
             Instantiate(DataManager.Instance._bombEnemy, _enemy.transform.position, Quaternion.identity);
+            _enemy.OnAttack?.Invoke();
         }
         _enemy.TransitionState(_enemy.StateCompo.GetState(StateType.Idle));
     }

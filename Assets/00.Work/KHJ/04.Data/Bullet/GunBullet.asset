@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199dfee58f1bcce45a86294c89b4a750, type: 3}
   m_Name: GunBullet
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 3
   moveSpeed: 9
   canWellTouched: 1

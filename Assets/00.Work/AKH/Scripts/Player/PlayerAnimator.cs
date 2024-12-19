@@ -44,6 +44,10 @@ public class PlayerAnimator : MonoBehaviour, IPlayerComponent
         Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
         _player.GetCompo<PlayerSniper>().Shoot(dir);
     }
+    public void Walk()
+    {
+        _player.OnWalk?.Invoke();
+    }
     public void ChangeLayer(int index)
     {
         Animator.SetLayerWeight(index, 1);

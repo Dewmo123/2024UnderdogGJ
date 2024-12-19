@@ -18,11 +18,15 @@ public class DroneMoveState : EnemyState
             RaycastHit2D ray = Physics2D.Raycast(transform.position, _enemy.Target.transform.position - transform.position, d, _enemy.WellMask);
             if (!ray)
             {
-                _enemy.Agent.SetDestination(transform.position);
+                if (_enemy.Agent.enabled && _enemy.Agent.isOnNavMesh)
+                    _enemy.Agent.SetDestination(transform.position);
                 _enemy.TransitionState(_enemy.StateCompo.GetState(StateType.Attack));
                 return;
             }
         }
-        _enemy.Agent.SetDestination(_enemy.Target.transform.position);
+        if (_enemy.Agent.enabled && _enemy.Agent.isOnNavMesh)
+        {
+            _enemy.Agent.SetDestination(_enemy.Target.transform.position);
+        }
     }
 }

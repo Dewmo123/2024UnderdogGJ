@@ -1,3 +1,4 @@
+using GGMPool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IHittable
 {
     #region Settings
     [Header("Settings")]
@@ -17,6 +18,9 @@ public class Player : MonoBehaviour
     #endregion
     public UnityEvent OnTimeSlow;
     public UnityEvent OnTimeRecover;
+    public UnityEvent OnJump;
+    public UnityEvent OnWalk;
+    public UnityEvent OnDead;
 
     public Transform FirePoint;
 
@@ -80,5 +84,9 @@ public class Player : MonoBehaviour
             return compo as T;
         }
         return null;
+    }
+    public void OnHit(int damage)
+    {
+        GetCompo<PlayerHealth>().ChangeValue(-damage);
     }
 }

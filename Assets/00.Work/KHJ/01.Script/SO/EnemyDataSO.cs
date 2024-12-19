@@ -3,36 +3,32 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/EnemyData")]
 public class EnemyDataSO : ScriptableObject
 {
-    public float maxHp;
-    public float damage;
+    public int damage;
     public float moveSpeed;
     public float attackCool;
     public float attackRange;
     public Bullet bullet;
+    public int score;
 
-
-    private float maxHpData;
-    private float damageData;
-    private float moveSpeedData;
-    private float attackCoolData;
-    private float attackRangeData;
-    private Bullet bulletData;
+    private int damageData;
+    private int scoreData;
 
     public void Save()
     {
-        maxHpData = maxHp;
         damageData = damage;
+        scoreData = score;
     }
 
     public void Load()
     {
-        maxHp = maxHpData;
         damage = damageData;
+        score = scoreData;
     }
 
-    public void IncreaseStats(float value)
+    public void IncreaseStats(int value)
     {
         damage += value;
+        score += value / 2;
     }
 
 }

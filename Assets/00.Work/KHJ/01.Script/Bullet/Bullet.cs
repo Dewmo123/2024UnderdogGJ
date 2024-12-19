@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private BulletDataSO _bulletData;
+    [SerializeField] protected BulletDataSO _bulletData;
     [SerializeField] private float _speed;
     private void Start()
     {
         if (TryGetComponent(out Rigidbody2D rigid))
             rigid.velocity = transform.right * _bulletData.moveSpeed;
+        StartCoroutine(DestroyBulletCoroutine());
     }
+
+    private IEnumerator DestroyBulletCoroutine()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,7 +32,11 @@ public class Bullet : MonoBehaviour
 
         if (collision.transform.CompareTag("Player"))
         {
-            Destroy(gameObject); // 데미지 코드 추가해야함
+            if (collision.TryGetComponent(out IHittable hit))
+            {
+                hit.OnHit(_bulletData.damage);
+                Destroy(gameObject);
+            }
         }
     }
 }

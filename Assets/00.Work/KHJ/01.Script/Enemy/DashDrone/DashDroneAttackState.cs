@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DashDroneAttackState : EnemyState
 {
+    public UnityEvent OnAttack;
+
     private Vector2 targetPosition;
     private Color _color;
 
@@ -37,11 +40,13 @@ public class DashDroneAttackState : EnemyState
         }
 
         var over = Physics2D.OverlapCircle(_enemy.transform.position, 0.5f, _enemy.PlayerMask);
-        if (over != null)
+        if (over)
         {
-            if (_canAttack)
+            if (_canAttack&&over.TryGetComponent(out Player target))
             {
+                target.GetCompo<PlayerHealth>().ChangeValue(-_enemy.EnemyData.damage);
                 _canAttack = false;
+                OnAttack?.Invoke();
             }
         }
     }
