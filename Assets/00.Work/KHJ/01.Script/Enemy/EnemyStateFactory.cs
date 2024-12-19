@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyStateFactory : MonoBehaviour
 {
-    [SerializeField] protected EnemyState Idle, Move, Attack, Death, Hit;
+    [SerializeField] protected EnemyState Idle, Move, Attack, Death;
 
     public virtual EnemyState GetState(StateType stateType)
         => stateType switch
@@ -12,7 +12,6 @@ public class EnemyStateFactory : MonoBehaviour
             StateType.Idle => Idle,
             StateType.Move => Move,
             StateType.Attack => Attack,
-            StateType.Hit => Hit,
             StateType.Death => Death,
             _ => throw new System.Exception("aa")
         };
@@ -29,6 +28,5 @@ public enum StateType
     Idle,
     Move,
     Attack,
-    Hit,
     Death,
 }

@@ -7,7 +7,8 @@ public class AgentVFX : MonoBehaviour, IPlayerComponent
     [SerializeField] private float _generateTerm;
     [SerializeField] private PoolManagerSO _poolManager;
     [SerializeField] private PoolTypeSO _afterImage;
-
+    [SerializeField] private SpriteRenderer lowerRenderer;
+    [SerializeField] private RotateablePlayerVIsual _rotateablePlayerVIsual;
     private float _currentTime;
     private Player _player;
 
@@ -28,9 +29,13 @@ public class AgentVFX : MonoBehaviour, IPlayerComponent
         {
             _currentTime = 0;
             AfterImage img = _poolManager.Pop(_afterImage) as AfterImage;
-            Sprite sprite = _player.GetCompo<PlayerAnimator>().Renderer.sprite;
+            bool isRotated = lowerRenderer.gameObject.activeInHierarchy;
+            Sprite sprite = isRotated ? lowerRenderer.sprite : _player.GetCompo<PlayerAnimator>().Renderer.sprite;
             bool isFlip = !_player.GetCompo<PlayerMovement>().IsFacingRight();
-            img.SetAfterImage(sprite, isFlip, transform.position, 0.2f);
+
+            float angle = isRotated ? _rotateablePlayerVIsual.ReversedAngle : 0;
+
+            img.SetAfterImage(sprite, isFlip, transform.position, 0.2f, angle, _rotateablePlayerVIsual.offset);
         }
     }
 }

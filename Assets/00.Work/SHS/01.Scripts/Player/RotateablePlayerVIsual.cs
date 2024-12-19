@@ -11,9 +11,10 @@ public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
     [SerializeField] private Transform upperBodyVisual;
     [SerializeField] float minAngle = 45f;
     public float Angle { get; private set; }
+    public float ReversedAngle => Mathf.Abs(Angle) > 90f ? 369 - ReverseAngle(Angle) : Angle;
     [SerializeField] float maxAngle = 45f;
-    [SerializeField] Vector2 offset;
-    [SerializeField] float angleOffset; 
+    [field: SerializeField] public Vector2 offset { get; private set; }
+    [SerializeField] float angleOffset;
 
     public void Initialize(Player player)
     {

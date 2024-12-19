@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2676813287671717341}
   - component: {fileID: 6787838453011628260}
   - component: {fileID: 201971043414304553}
-  - component: {fileID: 6839752730429074565}
   - component: {fileID: 5165458303242405306}
   m_Layer: 0
   m_Name: State
@@ -53,7 +52,7 @@ MonoBehaviour:
   Move: {fileID: 2676813287671717341}
   Attack: {fileID: 5165458303242405306}
   Death: {fileID: 201971043414304553}
-  Hit: {fileID: 6839752730429074565}
+  Hit: {fileID: 0}
 --- !u!114 &2676813287671717341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,18 +87,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1dc0c9972fbed7499caff5124008c1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6839752730429074565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2245265129906759102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c912a375d9cb349ae43463b7be54e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5165458303242405306
@@ -233,10 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f6878dfe183be428438fd04cd94649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnAnimationEnd:
+  OnDeathAnimationAction:
     m_PersistentCalls:
       m_Calls: []
-  OnAnimationAction:
+  OnAttackAnimationAction:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &8846260455117423395
@@ -352,7 +339,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.28424907, y: -0.049722373}
+  m_Offset: {x: -0.28424907, y: -0.035330772}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -363,7 +350,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.49654055, y: 0.42358267}
+  m_Size: {x: 0.6596446, y: 0.5003376}
   m_EdgeRadius: 0
 --- !u!50 &855913337910776421
 Rigidbody2D:

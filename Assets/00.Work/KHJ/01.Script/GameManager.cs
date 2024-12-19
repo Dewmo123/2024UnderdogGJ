@@ -8,8 +8,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     [SerializeField] private List<SpawnRegion> _spawnRegions;
 
+    private int _spawnCount = 0;
+
     private float _currentTime;
     private float _maxTime = 10;
+
+
+    private int _score;
+    private int _killedCount;
 
     private void Start()
     {
@@ -20,15 +26,34 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    public void KillEnemy(int value)
+    {
+        _score += value;
+        _killedCount++;
+    }
+
+
+    public void SetScore(int value)
+    {
+        _score += value;
+    }
+
+
+
+
+    
+    ////////////////////////////////////////// 적 웨이브
     private void Update()
     {
-                _currentTime += Time.deltaTime;
+         _currentTime += Time.deltaTime;
         if (_maxTime <= _currentTime)
         {
             _spawnRegions[Random.Range(0, _spawnRegions.Count)].SpawnObject();
-            ChangeStat(1);
+            
             _currentTime = 0;
-            _maxTime -= 0.05f;
+            _maxTime -= 0.1f;
+            _spawnCount++;
+            if (_spawnCount % 3 == 0) ChangeStat(1); 
         }
     }
 

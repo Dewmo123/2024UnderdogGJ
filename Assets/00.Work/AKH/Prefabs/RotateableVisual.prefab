@@ -48,11 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c66d30fb296c61458715c7f76192c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
   upperBody: {fileID: 7375815567711086339}
   upperBodyVisual: {fileID: 7575514348589522737}
   minAngle: 60
   maxAngle: 45
-  offset: {x: -0.01, y: -0.12}
+  <offset>k__BackingField: {x: 0, y: 0}
+  angleOffset: 0
 --- !u!95 &3889602435581732085
 Animator:
   serializedVersion: 5
@@ -164,7 +166,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.48, y: 0.48}
+  m_Size: {x: 2.4, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

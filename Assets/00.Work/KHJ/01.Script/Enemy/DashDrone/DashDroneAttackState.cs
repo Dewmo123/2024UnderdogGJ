@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DashDroneAttackState : EnemyState
 {
+    public UnityEvent OnAttack;
+
     private Vector2 targetPosition;
     private Color _color;
 
@@ -43,6 +46,7 @@ public class DashDroneAttackState : EnemyState
             {
                 target.GetCompo<PlayerHealth>().ChangeValue(-_enemy.EnemyData.damage);
                 _canAttack = false;
+                OnAttack?.Invoke();
             }
         }
     }

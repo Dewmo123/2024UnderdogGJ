@@ -7,6 +7,7 @@ using UnityEngine;
 public class AfterImage : MonoBehaviour, IPoolable
 {
     private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer _upperSpriteRenderer;
     private Pool _myPool;
     [SerializeField] private PoolTypeSO _myType;
     public PoolTypeSO PoolType => _myType;
@@ -16,21 +17,46 @@ public class AfterImage : MonoBehaviour, IPoolable
     public void ResetItem()
     {
         _spriteRenderer.color = new Color(1, 1, 1);
+        _upperSpriteRenderer.color = new Color(1, 1, 1);
     }
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public void SetAfterImage(Sprite spirte, bool isFlip, Vector3 position, float fadeTime)
+    public void SetAfterImage(Sprite spirte, bool isFlip, Vector3 position, float fadeTime, float angle, Vector2 offset)
     {
-        transform.position = position;
         _spriteRenderer.sprite = spirte;
-        _spriteRenderer.flipX = isFlip;
-        _spriteRenderer.DOFade(0f, fadeTime).OnComplete(() =>
+        transform.position = position;
+        transform.localScale = new Vector3(isFlip ? -1 : 1, 1, 1);
+        Debug.Log(angle);
+        if (angle == 0)
         {
-            _myPool.Push(this);
-        });
+            _upperSpriteRenderer.enabled = false;
+
+            _spriteRenderer.DOFade(0f, fadeTime).OnComplete(() =>
+            {
+                _myPool.Push(this);
+            });
+        }
+        else
+        {
+            _upperSpriteRenderer.enabled = true;
+
+            _upperSpriteRenderer.transform.parent.rotation = Quaternion.Euler(0, 0, angle);
+
+            _upperSpriteRenderer.transform.localPosition = -offset;
+            _upperSpriteRenderer.transform.parent.localPosition = offset;
+
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(_spriteRenderer.DOFade(0f, fadeTime));
+            sequence.Join(_upperSpriteRenderer.DOFade(0f, fadeTime));
+            sequence.OnComplete(() =>
+            {
+                _myPool.Push(this);
+            });
+            sequence.Play();
+        }
     }
 
     public void SetUpPool(Pool pool)

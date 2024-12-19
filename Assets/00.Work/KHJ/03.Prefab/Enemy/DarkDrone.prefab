@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6787838453011628260}
   - component: {fileID: 201971043414304553}
   - component: {fileID: 5662136171163316751}
-  - component: {fileID: 6839752730429074565}
   - component: {fileID: 1352345841888841208}
   m_Layer: 0
   m_Name: State
@@ -53,7 +52,6 @@ MonoBehaviour:
   Move: {fileID: 1352345841888841208}
   Attack: {fileID: 5662136171163316751}
   Death: {fileID: 201971043414304553}
-  Hit: {fileID: 6839752730429074565}
 --- !u!114 &6787838453011628260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,18 +86,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc0340c169a79514882d022bd0d3a1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6839752730429074565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2245265129906759102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c912a375d9cb349ae43463b7be54e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1352345841888841208
@@ -190,7 +176,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 41
   m_Sprite: {fileID: -670609786, guid: e13bb06bb98c64146b223157a186d030, type: 3}
-  m_Color: {r: 0.09433961, g: 0.07609469, b: 0.07609469, a: 1}
+  m_Color: {r: 0.8536849, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -233,10 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f6878dfe183be428438fd04cd94649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnAnimationEnd:
+  OnDeathAnimationAction:
     m_PersistentCalls:
       m_Calls: []
-  OnAnimationAction:
+  OnAttackAnimationAction:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &8846260455117423395
@@ -318,7 +304,7 @@ MonoBehaviour:
   PlayerMask:
     serializedVersion: 2
     m_Bits: 64
-  EnemyData: {fileID: 11400000, guid: 4cd1f65b889990c409eb16c295ac2289, type: 2}
+  EnemyData: {fileID: 11400000, guid: 7859143ece320694d8b923794c51c02d, type: 2}
   _reFindTime: 0.5
 --- !u!61 &3110449947774074520
 BoxCollider2D:
@@ -352,7 +338,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23901701, y: -0.09472358}
+  m_Offset: {x: -0.29042506, y: -0.04987824}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -363,7 +349,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3735857, y: 0.3508494}
+  m_Size: {x: 0.6864095, y: 0.6461723}
   m_EdgeRadius: 0
 --- !u!50 &855913337910776421
 Rigidbody2D:
