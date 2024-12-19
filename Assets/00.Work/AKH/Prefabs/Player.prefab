@@ -311,6 +311,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2151467387767886096}
+        m_TargetAssemblyTypeName: AgentVFX, Assembly-CSharp
+        m_MethodName: SetIsTimeSlow
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnTimeRecover:
     m_PersistentCalls:
       m_Calls:
@@ -337,6 +349,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2151467387767886096}
+        m_TargetAssemblyTypeName: AgentVFX, Assembly-CSharp
+        m_MethodName: SetIsTimeSlow
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   OnJump:
     m_PersistentCalls:
@@ -428,6 +452,7 @@ MonoBehaviour:
   _afterImage: {fileID: 11400000, guid: 392410dc22bdb8c478ef3bd82fe719b5, type: 2}
   lowerRenderer: {fileID: 6781069367256099913}
   _rotateablePlayerVIsual: {fileID: 5966869474593570843}
+  isTimeSlow: 0
 --- !u!1 &2781831043328221973
 GameObject:
   m_ObjectHideFlags: 0
