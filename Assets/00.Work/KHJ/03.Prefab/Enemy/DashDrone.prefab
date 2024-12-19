@@ -162,6 +162,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolTypeSO: {fileID: 11400000, guid: c3dda6a381beded4caf26ded12b1515f, type: 2}
   soundSO: {fileID: 11400000, guid: 272c4875a87dc9d4eb3bc5b4e5ca0e02, type: 2}
+--- !u!1 &8055556476791763942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7017151136337631614}
+  - component: {fileID: 572246224736473075}
+  - component: {fileID: 4258170275827390650}
+  m_Layer: 27
+  m_Name: Attak
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7017151136337631614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055556476791763942}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7888764210576928736}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &572246224736473075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055556476791763942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2314139ca70270b40852adaef698d4ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4258170275827390650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055556476791763942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9addc5904530515468d24ee032a9bedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTypeSO: {fileID: 11400000, guid: c3dda6a381beded4caf26ded12b1515f, type: 2}
+  soundSO: {fileID: 11400000, guid: 4519f1703e11dad4493f6cc2c993042d, type: 2}
 --- !u!1 &8427392282035545520
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +251,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8070786107028052951}
+  - {fileID: 7017151136337631614}
   m_Father: {fileID: 4490086958069649729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8786389219707197257
@@ -411,7 +471,19 @@ MonoBehaviour:
         m_CallState: 2
   OnAttack:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 572246224736473075}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedbacks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   CurrentState: {fileID: 0}
   Target: {fileID: 0}
   WellMask:

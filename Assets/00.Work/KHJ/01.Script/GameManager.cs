@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
@@ -8,14 +9,16 @@ public class GameManager : MonoSingleton<GameManager>
 
     [SerializeField] private List<SpawnRegion> _spawnRegions;
 
+    [SerializeField] private TextMeshProUGUI _scoreTxt;
+
     private int _spawnCount = 0;
 
     private float _currentTime;
     private float _maxTime = 10;
 
 
-    private int _score;
-    private int _killedCount;
+    public int score { get; private set; }
+    public int killedCount { get; private set; }
 
     private void Start()
     {
@@ -28,14 +31,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void KillEnemy(int value)
     {
-        _score += value;
-        _killedCount++;
+        score += value;
+        killedCount++;
     }
 
 
     public void SetScore(int value)
     {
-        _score += value;
+        score += value;
     }
 
 
@@ -55,6 +58,7 @@ public class GameManager : MonoSingleton<GameManager>
             _spawnCount++;
             if (_spawnCount % 3 == 0) ChangeStat(1); 
         }
+        _scoreTxt.text = "Score: \n" + score;
     }
 
     public void SaveAllData()

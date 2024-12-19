@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,8 @@ public class DeathUI : MonoBehaviour
 {
     private Transform _ui;
     private Player _player;
+    [SerializeField] private TextMeshProUGUI _droneTxt;
+    [SerializeField] private TextMeshProUGUI _scoreTxt;
     private void Awake()
     {
         _ui = transform.GetChild(0);
@@ -22,6 +25,8 @@ public class DeathUI : MonoBehaviour
     public void Show()
     {
         Time.timeScale = 0;
+        _droneTxt.text = "Destroyed Drones : " + GameManager.Instance.killedCount;
+        _scoreTxt.text = "Score : " + GameManager.Instance.score;
         _ui.gameObject.SetActive(true);
     }
     public void Quit()
