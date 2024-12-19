@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: MapTile_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1998945498, guid: b2ff18a8c13e62848bfd923444c653c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d39dfa017670f9448b01f8c398a9ffb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
