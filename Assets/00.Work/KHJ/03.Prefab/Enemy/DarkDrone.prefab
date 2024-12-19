@@ -175,12 +175,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 41
-  m_Sprite: {fileID: -670609786, guid: e13bb06bb98c64146b223157a186d030, type: 3}
-  m_Color: {r: 0.8536849, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 453621378, guid: f3f0ab83d7cf11e4180e67cc92f92bb8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.32}
+  m_Size: {x: 0.48, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -196,7 +196,7 @@ Animator:
   m_GameObject: {fileID: 8786389219707197257}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9f3b4d2c72c7c69458539f30554d36bf, type: 2}
+  m_Controller: {fileID: 9100000, guid: aad88692986de3e4ea5475fcc6fd1dad, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f6878dfe183be428438fd04cd94649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDeathAnimationAction:
+  OnAttackAnimationEnd:
     m_PersistentCalls:
       m_Calls: []
   OnAttackAnimationAction:
@@ -296,6 +296,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c8ff54ad9371442be68f153f3a3482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls: []
   CurrentState: {fileID: 0}
   Target: {fileID: 0}
   WellMask:
@@ -305,7 +311,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   EnemyData: {fileID: 11400000, guid: 7859143ece320694d8b923794c51c02d, type: 2}
-  _reFindTime: 0.5
 --- !u!61 &3110449947774074520
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -338,7 +343,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.29042506, y: -0.04987824}
+  m_Offset: {x: 0.0021121502, y: -0.024772465}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -349,7 +354,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6864095, y: 0.6461723}
+  m_Size: {x: 0.7257056, y: 0.34708583}
   m_EdgeRadius: 0
 --- !u!50 &855913337910776421
 Rigidbody2D:

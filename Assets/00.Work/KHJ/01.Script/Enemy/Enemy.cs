@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour, ISpawnable,IHittable
     public LayerMask PlayerMask;
     public EnemyDataSO EnemyData;
 
-    [SerializeField] private float _reFindTime = 0.5f;
 
 
 

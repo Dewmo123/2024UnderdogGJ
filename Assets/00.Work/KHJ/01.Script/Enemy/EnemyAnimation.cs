@@ -7,12 +7,14 @@ public class EnemyAnimation : MonoBehaviour
 {
     public Animator Animator { get; private set; }
 
+    private Enemy _enemy;
 
     public UnityEvent OnAttackAnimationEnd;
     public UnityEvent OnAttackAnimationAction;
     private void Awake()
     {
         Animator = GetComponent<Animator>();
+        _enemy = GetComponentInParent<Enemy>();
     }
 
     protected void Play(string animName)
@@ -33,17 +35,8 @@ public class EnemyAnimation : MonoBehaviour
             case AnimationType.idle:
                 Play("Idle");
                 break;
-            case AnimationType.run:
-                Play("Run");
-                break;
             case AnimationType.attack:
                 Play("Attack");
-                break;
-            case AnimationType.hit:
-                Play("Hit");
-                break;
-            case AnimationType.death:
-                Play("Death");
                 break;
             default:
                 break;
@@ -52,8 +45,15 @@ public class EnemyAnimation : MonoBehaviour
 
     internal void InvokeAnimationAttack() // 애니메이션 액션시 호출
     {
+        _enemy.OnAttack?.Invoke();
         OnAttackAnimationAction?.Invoke();
     }
+    
+    internal void InvokeAnimationEnd()
+    {
+        OnAttackAnimationEnd?.Invoke();
+}
+
 
     public void ResetEvent()
     {
@@ -63,8 +63,5 @@ public class EnemyAnimation : MonoBehaviour
 public enum AnimationType
 {
     idle,
-    run,
     attack,
-    death,
-    hit,
 }
