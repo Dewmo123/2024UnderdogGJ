@@ -1,7 +1,9 @@
 {
     "name": "GGM.Pool.Assembly",
     "rootNamespace": "GGMPool",
-    "references": [],
+    "references": [
+        "GUID:ea12c1762e4fdf04588be45a170a32f9"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
