@@ -86,10 +86,6 @@ public class Enemy : MonoBehaviour, ISpawnable,IHittable
     private void Update()
     {
         CurrentState.StateUpdate();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(5);
-        }
     }
 
     public void OnSpawn(Vector2 position)
