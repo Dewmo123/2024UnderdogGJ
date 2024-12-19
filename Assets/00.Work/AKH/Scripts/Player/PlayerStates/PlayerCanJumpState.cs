@@ -34,12 +34,25 @@ public class PlayerCanJumpState : PlayerCanAttackState
     private void HandleLeftCanceled()
     {
         if (_drag.isDrag)
+        {
             _drag.DragEnd(() => _input.MouseWorldPos);
-        _stateMachine.ChangeState(PlayerEnum.Jump);
+            _stateMachine.ChangeState(PlayerEnum.Jump);
+        }
     }
 
     private void HandleLeftClick()
     {
-        _drag.DragStart(() => _input.MouseWorldPos);
+        if (CheckPlayerOverlaped(_input.MouseWorldPos))
+            _drag.DragStart(() => _input.MouseWorldPos);
+    }
+    public bool CheckPlayerOverlaped(Vector2 pos)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, 0.4f);
+        foreach (var item in colliders)
+        {
+            if (item.TryGetComponent(out Player player))
+                return true;
+        }
+        return false;
     }
 }
