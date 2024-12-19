@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class AfterImage : MonoBehaviour, IPoolable
 {
+    [SerializeField] string matarialPropertyName = "_Value";
     private SpriteRenderer _spriteRenderer;
     [SerializeField] private SpriteRenderer _upperSpriteRenderer;
     private Pool _myPool;
@@ -24,11 +25,14 @@ public class AfterImage : MonoBehaviour, IPoolable
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public void SetAfterImage(Sprite spirte, bool isFlip, Vector3 position, float fadeTime, float angle, Vector2 offset)
+    public void SetAfterImage(Sprite spirte, bool isFlip, Vector3 position, float fadeTime, float angle, Vector2 offset, float SetmatValue)
     {
         _spriteRenderer.sprite = spirte;
         transform.position = position;
         transform.localScale = new Vector3(isFlip ? -1 : 1, 1, 1);
+
+        MatValue(SetmatValue);
+
         if (angle == 0)
         {
             _upperSpriteRenderer.enabled = false;
@@ -57,7 +61,11 @@ public class AfterImage : MonoBehaviour, IPoolable
             sequence.Play();
         }
     }
-
+    private void MatValue(float value)
+    {
+        _spriteRenderer.material.SetFloat(matarialPropertyName, value);
+        _upperSpriteRenderer.material.SetFloat(matarialPropertyName, value);
+    }
     public void SetUpPool(Pool pool)
     {
         _myPool = pool;
