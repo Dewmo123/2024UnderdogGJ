@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199dfee58f1bcce45a86294c89b4a750, type: 3}
-  m_Name: Bomb
+  m_Script: {fileID: 11500000, guid: 587e171a1695fcd40b5188aa2bed3079, type: 3}
+  m_Name: DarkDrone
   m_EditorClassIdentifier: 
-  damage: 25
-  moveSpeed: 0
-  canWellTouched: 1
+  maxHp: 10
+  damage: 15
+  moveSpeed: 0.5
+  attackCool: 3
+  attackRange: 3.5
+  bullet: {fileID: 6789193623792956212, guid: cd98e2f28fd93bd4183183e098e2b6d8, type: 3}

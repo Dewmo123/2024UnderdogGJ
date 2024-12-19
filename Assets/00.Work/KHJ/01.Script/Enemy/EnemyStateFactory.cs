@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStateFectory : MonoBehaviour
+public class EnemyStateFactory : MonoBehaviour
 {
     [SerializeField] protected EnemyState Idle, Move, Attack, Death, Hit;
 

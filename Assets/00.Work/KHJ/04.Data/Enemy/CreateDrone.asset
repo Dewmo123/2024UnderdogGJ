@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199dfee58f1bcce45a86294c89b4a750, type: 3}
-  m_Name: Bomb
+  m_Script: {fileID: 11500000, guid: 587e171a1695fcd40b5188aa2bed3079, type: 3}
+  m_Name: CreateDrone
   m_EditorClassIdentifier: 
-  damage: 25
-  moveSpeed: 0
-  canWellTouched: 1
+  maxHp: 50
+  damage: 0
+  moveSpeed: 0.3
+  attackCool: 5
+  attackRange: 12
+  bullet: {fileID: 0}

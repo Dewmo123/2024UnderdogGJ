@@ -6,16 +6,17 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     public EnemyAnimation AnimCompo { get; protected set; }
-    public EnemyStateFectory StateCompo { get; protected set; }
+    public EnemyStateFactory StateCompo { get; protected set; }
     public EnemyState CurrentState;
     public Rigidbody2D RbCompo { get; protected set; }
     public SpriteRenderer SpriteRenderer { get; protected set; }
 
-    public Transform Target;
+    public PlayerTest Target;
 
     public NavMeshAgent Agent { get; private set; }
 
-    public LayerMask WellMask { get; private set; }
+    public LayerMask WellMask;
+    public LayerMask PlayerMask;
 
     public EnemyDataSO EnemyData;
 
@@ -28,7 +29,7 @@ public class Enemy : MonoBehaviour
     {
         RbCompo = GetComponent<Rigidbody2D>();
         AnimCompo = GetComponentInChildren<EnemyAnimation>();
-        StateCompo = GetComponentInChildren<EnemyStateFectory>();
+        StateCompo = GetComponentInChildren<EnemyStateFactory>();
         Agent = GetComponentInChildren<NavMeshAgent>();
         SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         StateCompo.InitializeState(this);
@@ -36,7 +37,8 @@ public class Enemy : MonoBehaviour
         Agent.speed = EnemyData.moveSpeed;
         Agent.updateRotation = false;
         Agent.updateUpAxis = false;
-        // Target = FindAnyObjectByType<Player>();
+        Target = FindObjectOfType<PlayerTest>();
+
     }
 
 
@@ -82,6 +84,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        CurrentState.StateUpdate();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(5);

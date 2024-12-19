@@ -14,7 +14,7 @@ public class Bomb : Bullet
         {
             foreach (Collider2D target in targets)
             {
-                print(123);
+
             }
         }
     }

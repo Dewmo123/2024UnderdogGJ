@@ -12,10 +12,10 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
   - Well
   - 
   - 
-  - TestPlayer
   - 
   - 
   - 
@@ -35,7 +35,7 @@ TagManager:
   - 
   - 
   - Ground
-  - Wall
+  - Well
   - 
   - 
   m_SortingLayers:
