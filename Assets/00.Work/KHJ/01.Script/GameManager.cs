@@ -22,7 +22,7 @@ public class GameManager : MonoSingleton<GameManager>
         if (_maxTime <= _currentTime)
         {
             _spawnRegions[Random.Range(0, _spawnRegions.Count)].SpawnObject();
-            ChangeStat(1.3f);
+            ChangeStat(1);
             _currentTime = 0;
         }
     }
@@ -51,7 +51,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    public void ChangeStat(float value)
+    public void ChangeStat(int value)
     {
         foreach (EnemyDataSO data in _enemyDataListSO.EnemyDataList)
         {
