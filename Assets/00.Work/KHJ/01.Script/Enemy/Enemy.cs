@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour, ISpawnable
+public class Enemy : MonoBehaviour, ISpawnable,IPlayerSniperHitable
 {
     public EnemyAnimation AnimCompo { get; protected set; }
     public EnemyStateFactory StateCompo { get; protected set; }
@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour, ISpawnable
     public Rigidbody2D RbCompo { get; protected set; }
     public SpriteRenderer SpriteRenderer { get; protected set; }
 
-    public PlayerTest Target;
+    public Player Target;
 
     public NavMeshAgent Agent { get; private set; }
     public LayerMask WellMask;
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour, ISpawnable
         Agent.speed = EnemyData.moveSpeed;
         Agent.updateRotation = false;
         Agent.updateUpAxis = false;
-        Target = FindObjectOfType<PlayerTest>();
+        Target = FindObjectOfType<Player>();
 
     }
 
@@ -91,5 +91,11 @@ public class Enemy : MonoBehaviour, ISpawnable
 
     public void OnSpawn(Vector2 position)
     {
+    }
+
+    public void OnHit()
+    {
+        print(1);
+        TakeDamage(1);
     }
 }

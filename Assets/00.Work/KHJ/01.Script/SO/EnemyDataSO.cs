@@ -32,7 +32,6 @@ public class EnemyDataSO : ScriptableObject
 
     public void IncreaseStats(float value)
     {
-        maxHp += value;
         damage += value;
     }
 
