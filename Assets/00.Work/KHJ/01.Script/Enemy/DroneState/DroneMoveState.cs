@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class DroneMoveState : EnemyState
 {
-    protected override void EnterState()
-    {
-        _enemy.AnimCompo.PlayAnimaton(AnimationType.run);
-    }
-
-
     public override void StateFixedUpdate()
     {
         float d = Vector2.Distance(transform.position, _enemy.Target.transform.position);
