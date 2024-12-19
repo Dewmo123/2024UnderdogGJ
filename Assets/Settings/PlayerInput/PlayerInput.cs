@@ -62,6 +62,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""4080c590-3bab-4e6d-971c-c566865bfa19"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +139,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86d6ea56-2336-49b3-bb5e-1269b26b0ff7"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -142,6 +162,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Input_Left = m_Input.FindAction("Left", throwIfNotFound: true);
         m_Input_MousePos = m_Input.FindAction("MousePos", throwIfNotFound: true);
         m_Input_Right = m_Input.FindAction("Right", throwIfNotFound: true);
+        m_Input_Esc = m_Input.FindAction("Esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -207,6 +228,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Input_Left;
     private readonly InputAction m_Input_MousePos;
     private readonly InputAction m_Input_Right;
+    private readonly InputAction m_Input_Esc;
     public struct InputActions
     {
         private @PlayerInput m_Wrapper;
@@ -215,6 +237,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Left => m_Wrapper.m_Input_Left;
         public InputAction @MousePos => m_Wrapper.m_Input_MousePos;
         public InputAction @Right => m_Wrapper.m_Input_Right;
+        public InputAction @Esc => m_Wrapper.m_Input_Esc;
         public InputActionMap Get() { return m_Wrapper.m_Input; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -236,6 +259,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Right.started += instance.OnRight;
             @Right.performed += instance.OnRight;
             @Right.canceled += instance.OnRight;
+            @Esc.started += instance.OnEsc;
+            @Esc.performed += instance.OnEsc;
+            @Esc.canceled += instance.OnEsc;
         }
 
         private void UnregisterCallbacks(IInputActions instance)
@@ -252,6 +278,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Right.started -= instance.OnRight;
             @Right.performed -= instance.OnRight;
             @Right.canceled -= instance.OnRight;
+            @Esc.started -= instance.OnEsc;
+            @Esc.performed -= instance.OnEsc;
+            @Esc.canceled -= instance.OnEsc;
         }
 
         public void RemoveCallbacks(IInputActions instance)
@@ -275,5 +304,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnLeft(InputAction.CallbackContext context);
         void OnMousePos(InputAction.CallbackContext context);
         void OnRight(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
 }

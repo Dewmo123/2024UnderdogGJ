@@ -18,7 +18,7 @@ public class PlayerFallState : PlayerCanAttackState
     public override void Exit()
     {
         base.Exit();
-        //_player.GetCompo<AgentVFX>().ToggleAfterImage(false);
+        _player.GetCompo<AgentVFX>().ToggleAfterImage(false);
     }
     protected override void HandleMouse()
     {

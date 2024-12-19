@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using static PlayerInput;
 
 [CreateAssetMenu(menuName = "SO/PlayerInput")]
-public class InputReader : ScriptableObject, IInputActions,IPlayerComponent
+public class InputReader : ScriptableObject, IInputActions, IPlayerComponent
 {
     private PlayerInput _playerInput;
     private Player _player;
@@ -19,6 +19,7 @@ public class InputReader : ScriptableObject, IInputActions,IPlayerComponent
 
     public event Action OnRightPerform;
     public event Action OnRightCanceled;
+    public event Action OnEsc;
 
     public Vector2 MousePos { get; private set; }
     public Vector2 MouseWorldPos => Camera.main.ScreenToWorldPoint(MousePos);
@@ -90,5 +91,11 @@ public class InputReader : ScriptableObject, IInputActions,IPlayerComponent
             rightClick.Value = true;
         if (context.canceled)
             rightClick.Value = false;
+    }
+
+    void IInputActions.OnEsc(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            OnEsc?.Invoke();
     }
 }

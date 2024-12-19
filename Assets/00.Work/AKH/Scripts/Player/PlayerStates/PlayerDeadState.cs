@@ -11,6 +11,9 @@ public class PlayerDeadState : PlayerState
     {
         base.UpdateState();
         if (_endTriggerCalled)
+        {
+            _endTriggerCalled = false;
             _player.OnDead?.Invoke();
+        }
     }
 }
