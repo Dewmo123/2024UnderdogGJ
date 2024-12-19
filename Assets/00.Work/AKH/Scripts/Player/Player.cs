@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private PlayerStateMachine _stateMachine;
     private Dictionary<Type, IPlayerComponent> _components;
     [SerializeField] private InputReader _inputReader;
+
     private void Awake()
     {
         Rigid = GetComponent<Rigidbody2D>();

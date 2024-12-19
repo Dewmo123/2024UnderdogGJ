@@ -30,7 +30,6 @@ public class SlowTimeVolume : MonoBehaviour
         while (time < duration)
         {
             time += Time.deltaTime;
-            Debug.Log(time / duration);
             volume.weight = Mathf.Lerp(startValue, value, time / duration);
             yield return null;
         }
