@@ -60,6 +60,16 @@ public class DragJump : MonoBehaviour, IPlayerComponent
         dragLine.enabled = false;
         jumpGuideLine.Disable();
     }
+    public void DragStop(Func<Vector2> mousePos)
+    {
+        StopCoroutine(draggCoroutine);
+        draggCoroutine = null;
+
+        (Vector2 dir, float distance, Vector2 power) = GetJumpInfo(mousePos());
+
+        dragLine.enabled = false;
+        jumpGuideLine.Disable();
+    }
     private void Jump(Vector2 dir, Vector2 power)
     {
         Vector2 forece = dir * power;

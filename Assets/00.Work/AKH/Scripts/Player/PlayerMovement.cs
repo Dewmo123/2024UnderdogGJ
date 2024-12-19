@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     {
         _rb.velocity = moveVec;
     }
+    public void StopXMovement()
+    {
+        _rb.velocity = new Vector2(0, _rb.velocity.y);
+    }
     private void Update()
     {
         CheckGround();

@@ -6,6 +6,7 @@ using UnityEngine;
 public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
 {
     private Player _player;
+    public Animator Anim;
     [SerializeField] private Transform upperBody;
     [SerializeField] private Transform upperBodyVisual;
     [SerializeField] float minAngle = 45f;
@@ -16,7 +17,7 @@ public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
     {
         _player = player;
         gameObject.SetActive(false);
-
+        Anim = GetComponent<Animator>();
     }
 
     public void Rotate(float angle)
@@ -41,6 +42,14 @@ public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
     private float ReverseAngle(float angle)
     {
         return angle > 0 ? 180 - angle : -180 - angle;
+    }
+    public void EndTriggerCalled()
+    {
+        _player.GetCompo<PlayerAnimator>().EndTriggerCalled();
+    }
+    public void Attack()
+    {
+        _player.GetCompo<PlayerAnimator>().Attack();
     }
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()

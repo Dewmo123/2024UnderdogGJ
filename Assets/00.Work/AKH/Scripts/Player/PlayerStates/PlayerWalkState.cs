@@ -18,7 +18,7 @@ public class PlayerWalkState : PlayerState
         Vector2 moveVec = _player.GetCompo<InputReader>().MoveVector;
         if (moveVec == Vector2.zero)
             _stateMachine.ChangeState(PlayerEnum.Idle);
-        movement.SetMovement(new Vector2(moveVec.x* _player.moveSpeed, _player.Rigid.velocity.y));
+        movement.SetMovement(new Vector2(moveVec.x * _player.moveSpeed, _player.Rigid.velocity.y));
         movement.HandleSpriteFlip(moveVec + (Vector2)_player.transform.position);
     }
 }
