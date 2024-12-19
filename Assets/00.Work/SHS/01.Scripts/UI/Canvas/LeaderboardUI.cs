@@ -9,6 +9,10 @@ public class LeaderboardUI : MonoBehaviour
     [SerializeField] private Leaderboard_PlayerUI playerUIPrefab;
     [SerializeField] private Transform contentsTrm;
     [ContextMenu("DrawLeaderboard")]
+    private void OnEnable()
+    {
+        DrawLeaderboard();
+    }
     public async void DrawLeaderboard()
     {
         GetScoresOptions options = new GetScoresOptions();
