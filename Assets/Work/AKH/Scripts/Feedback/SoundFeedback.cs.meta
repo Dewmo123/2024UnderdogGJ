@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: e98f3d1df87abd94eabcea60b445b82d
+guid: 9addc5904530515468d24ee032a9bedc
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - _poolManager: {fileID: 11400000, guid: cad995cea29e52b4cb4d0faf2b9e61c3, type: 2}
+  - poolTypeSO: {fileID: 11400000, guid: c3dda6a381beded4caf26ded12b1515f, type: 2}
+  - soundSO: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
