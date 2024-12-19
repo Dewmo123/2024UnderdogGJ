@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour, ISpawnable,IHittable
 
     public void TakeDamage(float damage)
     {
-        if (CurrentState == StateCompo.GetState(StateType.Death))
+        if (CurrentState != StateCompo.GetState(StateType.Death))
             TransitionState(StateCompo.GetState(StateType.Death));
     }
 
