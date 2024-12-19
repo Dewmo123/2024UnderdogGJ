@@ -9,7 +9,7 @@ public class SoundFeedback : Feedback
     [SerializeField] private SoundSO soundSO;
     public override void PlayFeedback()
     {
-        IPoolable poolable = PoolManagerSO.instance.Pop(poolTypeSO);
+        IPoolable poolable = PoolManagerSO.Instance.Pop(poolTypeSO);
         SoundPlayer soundPlayer = poolable as SoundPlayer;
         soundPlayer.PlaySound(soundSO);
     }
