@@ -314,7 +314,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SlowTimeVolume, Assembly-CSharp
+        m_TargetAssemblyTypeName: SlowTimeCam, Assembly-CSharp
         m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
@@ -326,7 +326,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SlowTimeCam, Assembly-CSharp
+        m_TargetAssemblyTypeName: SlowTimeVolume, Assembly-CSharp
         m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
@@ -367,10 +367,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDead:
+    m_PersistentCalls:
+      m_Calls: []
   FirePoint: {fileID: 1359811012612700590}
   _inputReader: {fileID: 11400000, guid: 9d97a1aa4f6f93a449ea72aa09a57f69, type: 2}
-  _poolManager: {fileID: 0}
-  _soundPlayer: {fileID: 0}
 --- !u!114 &7118007570011400570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,8 +420,7 @@ GameObject:
   - component: {fileID: 1021316771411785665}
   - component: {fileID: 4405871671907480395}
   - component: {fileID: 6327614377174719748}
-  - component: {fileID: 2377722300257335466}
-  - component: {fileID: 5747884442111323635}
+  - component: {fileID: 377486184523182335}
   m_Layer: 6
   m_Name: JumpFeedback
   m_TagString: Untagged
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolTypeSO: {fileID: 11400000, guid: c3dda6a381beded4caf26ded12b1515f, type: 2}
   soundSO: {fileID: 11400000, guid: 210cfbdd16e90f8468b869497d75f2d0, type: 2}
---- !u!114 &2377722300257335466
+--- !u!114 &377486184523182335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -478,63 +478,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2781831043328221973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Script: {fileID: 11500000, guid: 4406c351742092c428da78fde6a2679c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ImpulseDefinition:
-    m_ImpulseChannel: 1
-    m_ImpulseShape: 1
-    m_CustomImpulseShape:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ImpulseDuration: 0.2
-    m_ImpulseType: 0
-    m_DissipationRate: 0.25
-    m_RawSignal: {fileID: 0}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
-    m_RepeatMode: 0
-    m_Randomize: 1
-    m_TimeEnvelope:
-      m_AttackShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_DecayShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_AttackTime: 0
-      m_SustainTime: 0.2
-      m_DecayTime: 0.7
-      m_ScaleWithImpact: 1
-      m_HoldForever: 0
-    m_ImpactRadius: 100
-    m_DirectionMode: 0
-    m_DissipationMode: 2
-    m_DissipationDistance: 100
-    m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -1, z: 0}
---- !u!114 &5747884442111323635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2781831043328221973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1fba865269a7da458321a58325e0fc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 1
+  _manager: {fileID: 11400000, guid: cad995cea29e52b4cb4d0faf2b9e61c3, type: 2}
+  _type: {fileID: 11400000, guid: 6e8177e5192229e4c82304798f737f66, type: 2}
 --- !u!1 &3229231534578091588
 GameObject:
   m_ObjectHideFlags: 0

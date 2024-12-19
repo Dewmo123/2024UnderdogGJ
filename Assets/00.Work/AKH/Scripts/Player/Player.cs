@@ -26,6 +26,7 @@ public class Player : MonoBehaviour, IHittable
 
     private PlayerStateMachine _stateMachine;
     private Dictionary<Type, IPlayerComponent> _components;
+    public PlayerState BeforeState => _stateMachine.beforeState;
     [SerializeField] private InputReader _inputReader;
 
     private void Awake()
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour, IHittable
         _stateMachine.AddState(PlayerEnum.WallIdle, new PlayerWallIdleState(_stateMachine, "WallIdle", this));
         _stateMachine.AddState(PlayerEnum.WallAim, new PlayerWallAimState(_stateMachine, "WallAim", this));
         _stateMachine.AddState(PlayerEnum.WallShoot, new PlayerWallAttackState(_stateMachine, "WallShoot", this));
+        _stateMachine.AddState(PlayerEnum.Dead, new PlayerDeadState(_stateMachine, "Dead", this));
         _stateMachine.Init(PlayerEnum.Idle, this);
         #endregion
         GetCompo<PlayerHealth>().OnHealthDec += HandleHealthChanged;
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour, IHittable
     private void OnDestroy()
     {
         GetCompo<PlayerHealth>().OnHealthDec -= HandleHealthChanged;
+        _stateMachine.currentState.Exit();
     }
     private void HandleHealthChanged(int val)
     {
@@ -88,5 +91,10 @@ public class Player : MonoBehaviour, IHittable
     public void OnHit(int damage)
     {
         GetCompo<PlayerHealth>().ChangeValue(-damage);
+    }
+
+    public void Dead()
+    {
+        _stateMachine.ChangeState(PlayerEnum.Dead);
     }
 }

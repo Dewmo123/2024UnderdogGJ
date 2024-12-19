@@ -7,6 +7,7 @@ public class PlayerStateMachine
 {
     public Dictionary<PlayerEnum, PlayerState> stateDictionary = new Dictionary<PlayerEnum, PlayerState>();
     public PlayerState currentState;
+    public PlayerState beforeState;
 
     private Player _player;
     public void Init(PlayerEnum start, Player player)
@@ -26,7 +27,10 @@ public class PlayerStateMachine
     public void ChangeState(PlayerEnum type)
     {
         if (currentState != null)
+        {
+            beforeState = currentState;
             currentState.Exit();
+        }
         currentState = stateDictionary[type];
         currentState.Enter();
     }

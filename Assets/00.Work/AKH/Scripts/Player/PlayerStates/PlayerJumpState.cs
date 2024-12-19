@@ -10,6 +10,7 @@ public class PlayerJumpState : PlayerCanAttackState
     public override void Enter()
     {
         base.Enter();
+        _player.OnJump?.Invoke();
         _player.GetCompo<PlayerMovement>().HandleSpriteFlip(_player.transform.position + (Vector3)_player.Rigid.velocity);
     }
     public override void UpdateState()

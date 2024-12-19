@@ -36,7 +36,6 @@ public class PlayerCanJumpState : PlayerCanAttackState
         if (_drag.isDrag)
         {
             //_player.GetCompo<AgentVFX>().ToggleAfterImage(true);
-            _player.OnJump?.Invoke();
             _drag.DragEnd(() => _input.MouseWorldPos);
             _stateMachine.ChangeState(PlayerEnum.Jump);
         }

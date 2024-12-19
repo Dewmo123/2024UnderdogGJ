@@ -18,12 +18,20 @@ public class PlayerHealth : MonoBehaviour, IPlayerComponent
         _curHealth = new NotifyValue<int>(_maxHealth);
         _curHealth.OnvalueChanged += HandleHealthChanged;
     }
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+            ChangeValue(-15);
+    }
+#endif
     private void HandleHealthChanged(int prev, int next)
     {
         OnHealthDec?.Invoke(next);
         if (next == 0)
         {
             //Á×¾úÀ»¶§
+            _player.Dead();
         }
 
     }
