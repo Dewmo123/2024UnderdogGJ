@@ -7,7 +7,7 @@ public class DarkDroneMoveState : EnemyState
     public override void StateFixedUpdate()
     {
         float d = Vector2.Distance(transform.position, _enemy.Target.transform.position);
-        if (d < _enemy.EnemyData.attackRange)
+        if (d < _enemy.EnemyData.attackRange * 1.3f)
         {
             RaycastHit2D ray = Physics2D.Raycast(transform.position, _enemy.Target.transform.position - transform.position, d, _enemy.WellMask);
             if (!ray)
