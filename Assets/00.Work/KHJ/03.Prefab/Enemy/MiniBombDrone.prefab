@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 5293077505769412740}
   - component: {fileID: 3110449947774074520}
   - component: {fileID: 855913337910776421}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: MiniBombDrone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
