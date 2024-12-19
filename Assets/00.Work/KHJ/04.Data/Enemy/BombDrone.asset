@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587e171a1695fcd40b5188aa2bed3079, type: 3}
   m_Name: BombDrone
   m_EditorClassIdentifier: 
-  maxHp: 20
+  maxHp: 1
   damage: 0
   moveSpeed: 4
   attackCool: 0
