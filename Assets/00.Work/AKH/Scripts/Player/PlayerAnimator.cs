@@ -40,7 +40,9 @@ public class PlayerAnimator : MonoBehaviour, IPlayerComponent
     }
     public void Attack()
     {
-        _player.GetCompo<PlayerSniper>().Shoot(_player.GetCompo<InputReader>().MouseWorldPos - (Vector2)_player.FirePoint.position);
+        float angle = _player.GetCompo<RotateablePlayerVIsual>().Angle;
+        Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+        _player.GetCompo<PlayerSniper>().Shoot(dir);
     }
     public void ChangeLayer(int index)
     {
