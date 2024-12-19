@@ -10,8 +10,8 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
 {
     [SerializeField] Transform firePoint;
     [SerializeField] float shootDistance = 10f;
-    [SerializeField] LayerMask groundLayer;
-    [SerializeField] LayerMask enemyLayer;
+    [SerializeField] LayerMask hitLayer;
+    [SerializeField] LayerMask wallLayer;
     [SerializeField] AnimationCurve bulletLineFadeOutCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 0));
     [SerializeField] float bulletLineFadeOutTime = 0.5f;
     private Player _player;
@@ -39,18 +39,22 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
 
         Vector2 endPos = firePoint.position + (Vector3)(dir * shootDistance);
 
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, dir, shootDistance, groundLayer);
-        if (hit.collider != null)
+        RaycastHit2D[] hitArray = Physics2D.RaycastAll(firePoint.position, dir, shootDistance, hitLayer);
+        foreach (var hit in hitArray)
         {
-            endPos = hit.point;
-        }
-        bulletLine.SetPosition(1, endPos);
-        RaycastHit2D[] ray = Physics2D.RaycastAll(firePoint.position, dir, shootDistance, enemyLayer);
-        foreach(var item in ray)
-        {
-            Debug.Log("hit");
-            if (hit.collider.TryGetComponent<IPlayerSniperHitable>(out var hitable))
-                hitable.OnHit();
+            if (hit.collider != null)
+            {
+                if (hit.collider.TryGetComponent<IPlayerSniperHitable>(out var hitable))
+                {
+                    hitable.OnHit();
+                }
+
+                if(hit.collider.gameObject.layer == wallLayer)
+                {
+                    endPos = hit.point;
+                    break;
+                }
+            }
         }
 
         StartCoroutine(CalcCoolTime());
