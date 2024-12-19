@@ -51,5 +51,4 @@ public class JumpGuideLine : MonoBehaviour
     {
         lineRendererCompo.enabled = false;
     }
-    [SerializeField] private float power = 10f;
 }

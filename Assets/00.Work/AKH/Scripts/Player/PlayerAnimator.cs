@@ -5,30 +5,47 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour, IPlayerComponent
 {
-    private Animator _anim;
+    private Animator localAnim;
+    public Animator Animator { get; private set; }
+    public SpriteRenderer Renderer { get; private set; }
     private Player _player;
     private int _beforeLayer = 0;
     public void Initialize(Player player)
     {
         _player = player;
-        _anim = _player.Anim;
+        localAnim = GetComponent<Animator>();
+        Renderer = GetComponent<SpriteRenderer>();
+        Animator = localAnim;
+    }
+    public void ChangeAnimator(Animator anim, bool isLocal = false)
+    {
+        if (isLocal)
+        {
+            Animator = localAnim;
+            return;
+        }
+        Animator = anim;
     }
     public void EnterAnimation(int hash)
     {
-        _anim.SetBool(hash, true);
+        Animator.SetBool(hash, true);
     }
     public void ExitAnimation(int hash)
     {
-        _anim.SetBool(hash, false);
+        Animator.SetBool(hash, false);
     }
     public void EndTriggerCalled()
     {
         _player.EndTriggerCalled();
     }
+    public void Attack()
+    {
+        _player.GetCompo<PlayerSniper>().Shoot(_player.GetCompo<InputReader>().MouseWorldPos - (Vector2)_player.FirePoint.position);
+    }
     public void ChangeLayer(int index)
     {
-        _anim.SetLayerWeight(index, 1);
-        _anim.SetLayerWeight(_beforeLayer, 0);
+        Animator.SetLayerWeight(index, 1);
+        Animator.SetLayerWeight(_beforeLayer, 0);
         _beforeLayer = index;
     }
 }

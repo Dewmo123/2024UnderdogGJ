@@ -2,7 +2,8 @@
     "name": "GGM.Pool.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:e20b535603afb3f45a657908223f29f2"
+        "GUID:e20b535603afb3f45a657908223f29f2",
+        "GUID:ea12c1762e4fdf04588be45a170a32f9"
     ],
     "includePlatforms": [
         "Editor"
