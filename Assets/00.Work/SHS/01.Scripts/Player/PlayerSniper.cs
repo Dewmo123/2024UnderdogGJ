@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -21,9 +22,15 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
     public bool isCoolTime { get; private set; }
     public float Ratio => _curCool / _shootCool;
 
+    [SerializeField] UnityEvent onShoot;
+    [SerializeField] UnityEvent onCoolTime;
     public void Shoot(Vector2 dir)
     {
-        if (isCoolTime) return;
+        if (isCoolTime)
+        {
+            onCoolTime.Invoke();
+            return;
+        }
         dir = dir.normalized;
 
         bulletLine.positionCount = 2;
@@ -42,8 +49,11 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
             endPos = hit.point;
         }
         bulletLine.SetPosition(1, endPos);
+
         StartCoroutine(CalcCoolTime());
         StartCoroutine(BulletLineFadeOut());
+
+        onShoot.Invoke();
     }
 
     private IEnumerator CalcCoolTime()
@@ -74,7 +84,7 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
             {
                 break;
             }
-            
+
             yield return null;
         }
     }

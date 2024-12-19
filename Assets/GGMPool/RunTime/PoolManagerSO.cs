@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace GGMPool
 {
     [CreateAssetMenu (menuName = "SO/Pool/Manager")]
-    public class PoolManagerSO : ScriptableObject
+    public class PoolManagerSO : ScriptableSingleton<PoolManagerSO>
     {
         public List<PoolingItemSO> poolingItemList;
-        [SerializeField] private Transform _rootTrm; //Ç®¸Å´ÏÂ¡ÇÒ ·çÆ®
+        [SerializeField] private Transform _rootTrm; //Ç®ï¿½Å´ï¿½Â¡ï¿½ï¿½ ï¿½ï¿½Æ®
 
         private Dictionary<PoolTypeSO, Pool> _pools;
 
