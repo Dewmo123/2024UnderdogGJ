@@ -35,7 +35,12 @@ public class AgentVFX : MonoBehaviour, IPlayerComponent
 
             float angle = isRotated ? _rotateablePlayerVIsual.ReversedAngle : 0;
 
-            img.SetAfterImage(sprite, isFlip, transform.position, 0.2f, angle, _rotateablePlayerVIsual.offset);
+            img.SetAfterImage(sprite, isFlip, transform.position, 0.2f, angle, _rotateablePlayerVIsual.offset, isTimeSlow ? 1f : 0);
         }
+    }
+    [SerializeField] bool isTimeSlow;
+    public void SetIsTimeSlow(bool value)
+    {
+        isTimeSlow = value;
     }
 }
