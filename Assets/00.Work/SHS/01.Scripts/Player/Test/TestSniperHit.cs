@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSniperHit : MonoBehaviour, IPlayerSniperHitable
+public class TestSniperHit : MonoBehaviour
 {
     public void OnHit()
     {

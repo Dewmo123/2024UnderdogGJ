@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyDataSO : ScriptableObject
 {
     public float maxHp;
-    public float damage;
+    public int damage;
     public float moveSpeed;
     public float attackCool;
     public float attackRange;
@@ -12,7 +12,7 @@ public class EnemyDataSO : ScriptableObject
 
 
     private float maxHpData;
-    private float damageData;
+    private int damageData;
     private float moveSpeedData;
     private float attackCoolData;
     private float attackRangeData;
@@ -30,7 +30,7 @@ public class EnemyDataSO : ScriptableObject
         damage = damageData;
     }
 
-    public void IncreaseStats(float value)
+    public void IncreaseStats(int value)
     {
         damage += value;
     }

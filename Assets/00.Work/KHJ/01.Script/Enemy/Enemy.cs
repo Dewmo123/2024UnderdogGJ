@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour, ISpawnable,IPlayerSniperHitable
+public class Enemy : MonoBehaviour, ISpawnable,IHittable
 {
     public EnemyAnimation AnimCompo { get; protected set; }
     public EnemyStateFactory StateCompo { get; protected set; }
@@ -93,9 +93,8 @@ public class Enemy : MonoBehaviour, ISpawnable,IPlayerSniperHitable
     {
     }
 
-    public void OnHit()
+    public void OnHit(int damage)
     {
-        print(1);
-        TakeDamage(1);
+        TakeDamage(damage);
     }
 }

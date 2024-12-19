@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private BulletDataSO _bulletData;
+    [SerializeField] protected BulletDataSO _bulletData;
     [SerializeField] private float _speed;
     private void Start()
     {
@@ -24,6 +24,10 @@ public class Bullet : MonoBehaviour
 
         if (collision.transform.CompareTag("Player"))
         {
+            if (collision.TryGetComponent(out IHittable hit))
+            {
+                hit.OnHit(_bulletData.damage);
+            }
             Destroy(gameObject); // 데미지 코드 추가해야함
         }
     }

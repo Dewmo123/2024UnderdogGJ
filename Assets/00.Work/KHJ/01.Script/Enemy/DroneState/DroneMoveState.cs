@@ -23,6 +23,9 @@ public class DroneMoveState : EnemyState
                 return;
             }
         }
-        _enemy.Agent.SetDestination(_enemy.Target.transform.position);
+        if (_enemy.Agent.enabled && _enemy.Agent.isOnNavMesh)
+        {
+            _enemy.Agent.SetDestination(_enemy.Target.transform.position);
+        }
     }
 }
