@@ -18,5 +18,7 @@ public class PlayerIdleState : PlayerCanJumpState
         {
             _stateMachine.ChangeState(PlayerEnum.Walk);
         }
+        if(_player.Rigid.velocity.y<-0.1f)
+            _stateMachine.ChangeState(PlayerEnum.Fall);
     }
 }

@@ -39,6 +39,10 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     {
         isWall = Physics2D.Raycast(_wallChker.position, IsFacingRight() ? Vector3.right : Vector3.left, 0.3f, _wallLayer);
     }
+    public bool ReverseWallCheck()
+    {
+        return Physics2D.Raycast(_wallChker.position, IsFacingRight() ? Vector3.left : Vector3.right, 1, _wallLayer);
+    }
     #region
     public bool IsFacingRight()
     {
@@ -65,6 +69,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
         Gizmos.DrawWireCube(_groundChker.position, _groundCheckerSize);
         Gizmos.color = Color.red;
         Gizmos.DrawRay(new Ray(_wallChker.position, IsFacingRight() ? Vector3.right : Vector3.left));
+        Gizmos.DrawRay(new Ray(_wallChker.position, IsFacingRight() ? Vector3.left : Vector3.right));
     }
 #endif
 }

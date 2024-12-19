@@ -39,12 +39,25 @@ public class PlayerAimState : PlayerState
     public override void UpdateState()
     {
         base.UpdateState();
-        Vector3 mousePos = _input.MouseWorldPos;
-        Vector3 dir = mousePos - _visual.transform.position;
-        HandleFlip(mousePos);
+        Rotate();
+        if (_movement.isWall || _movement.ReverseWallCheck())
+            _stateMachine.ChangeState(PlayerEnum.WallAim);
+    }
 
-        float rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Vector3 bulletDir = mousePos - _player.FirePoint.position;
+    private void Rotate()
+    {
+        Vector3 mousePos = _input.MouseWorldPos;
+        Vector3 shootVec = mousePos - _player.FirePoint.position;
+        Vector3 visualVec = mousePos - _visual.transform.position;
+        HandleFlip(mousePos);
+        if (visualVec.magnitude < (_visual.transform.position - _player.FirePoint.position).magnitude * 2)
+        {
+            return;
+        }
+        float rotation = Mathf.Atan2(shootVec.y, shootVec.x) * Mathf.Rad2Deg;
+
+        float angle = _player.GetCompo<RotateablePlayerVIsual>().Angle;
+        Vector2 bulletDir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
         _player.GetCompo<BulletLine>().DrawLine(bulletDir);
 
         if (_movement.IsFacingRight())

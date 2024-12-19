@@ -10,8 +10,10 @@ public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
     [SerializeField] private Transform upperBody;
     [SerializeField] private Transform upperBodyVisual;
     [SerializeField] float minAngle = 45f;
+    public float Angle { get; private set; }
     [SerializeField] float maxAngle = 45f;
     [SerializeField] Vector2 offset;
+    [SerializeField] float angleOffset; 
 
     public void Initialize(Player player)
     {
@@ -23,20 +25,26 @@ public class RotateablePlayerVIsual : MonoBehaviour, IPlayerComponent
     public void Rotate(float angle)
     {
         angle = Mathf.Clamp(angle, -minAngle, maxAngle);
+        angle += angleOffset;
         upperBody.localRotation = Quaternion.Euler(0, 0, angle);
 
         upperBody.localPosition = offset;
         upperBodyVisual.localPosition = -offset;
+
+        Angle = angle;
     }
     public void ReverseRotate(float angle)
     {
         angle = ReverseAngle(angle);
-
         angle = Mathf.Clamp(angle, -minAngle, maxAngle);
+        angle += angleOffset;
+
         upperBody.localRotation = Quaternion.Euler(0, 0, angle);
 
         upperBody.localPosition = offset;
         upperBodyVisual.localPosition = -offset;
+
+        Angle = ReverseAngle(angle);
     }
 
     private float ReverseAngle(float angle)
