@@ -23,7 +23,6 @@ public class PlayerWallAimState : PlayerAimState
     }
     protected override void HandleMouseCancel()
     {
-        Debug.Log("MouseCancel");
         _stateMachine.ChangeState(PlayerEnum.WallShoot);
     }
 }

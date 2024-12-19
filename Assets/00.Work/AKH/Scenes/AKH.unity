@@ -197,6 +197,10 @@ PrefabInstance:
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 1426784104}
+    - target: {fileID: 535273761585302735, guid: a6e4c4b67e7fed24d9719e017cb17ddb, type: 3}
+      propertyPath: _shootCool
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2625854275032683280, guid: a6e4c4b67e7fed24d9719e017cb17ddb, type: 3}
       propertyPath: m_Name
       value: PlayerSniper
@@ -1026,6 +1030,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 769380387}
     m_Modifications:
+    - target: {fileID: 428839611993171985, guid: d3ca81f0bf334f84bb0514cbb6b850b0, type: 3}
+      propertyPath: maxAngle
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 428839611993171985, guid: d3ca81f0bf334f84bb0514cbb6b850b0, type: 3}
+      propertyPath: minAngle
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 659264834690909251, guid: d3ca81f0bf334f84bb0514cbb6b850b0, type: 3}
       propertyPath: m_Sprite
       value: 
