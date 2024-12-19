@@ -56,7 +56,6 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
                 }
             }
         }
-        bulletLine.SetPosition(1, endPos);
 
         StartCoroutine(CalcCoolTime());
         StartCoroutine(BulletLineFadeOut());

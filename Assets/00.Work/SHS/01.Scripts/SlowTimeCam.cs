@@ -33,7 +33,6 @@ public class SlowTimeCam : MonoBehaviour
         while (time < duration)
         {
             time += Time.deltaTime;
-            Debug.Log(time / duration);
             virCamera.m_Lens.OrthographicSize = Mathf.Lerp(startValue, value, time / duration);
             yield return null;
         }

@@ -39,6 +39,13 @@ public class PlayerAimState : PlayerState
     public override void UpdateState()
     {
         base.UpdateState();
+        Rotate();
+        if (_movement.isWall || _movement.ReverseWallCheck())
+            _stateMachine.ChangeState(PlayerEnum.WallAim);
+    }
+
+    private void Rotate()
+    {
         Vector3 mousePos = _input.MouseWorldPos;
         Vector3 shootVec = mousePos - _player.FirePoint.position;
         Vector3 visualVec = mousePos - _visual.transform.position;
