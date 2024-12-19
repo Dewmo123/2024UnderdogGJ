@@ -3,11 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "SO/BulletData")]
 public class BulletDataSO : ScriptableObject
 {
-    public float damage;
+    public int damage;
     public float moveSpeed;
     public bool canWellTouched;
 
-    private float damageData;
+    private int damageData;
 
     public void Save()
     {
@@ -19,7 +19,7 @@ public class BulletDataSO : ScriptableObject
         damage = damageData;
     }
 
-    public void IncreaseStats(float value)
+    public void IncreaseStats(int value)
     {
         damage += value;
     }

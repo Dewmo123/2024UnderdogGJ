@@ -49,8 +49,8 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
         foreach (var item in ray)
         {
             Debug.Log("hit");
-            if (item.collider.TryGetComponent<IPlayerSniperHitable>(out var hitable))
-                hitable.OnHit();
+            if (item.collider.TryGetComponent<IHittable>(out var hitable))
+                hitable.OnHit(1);
         }
 
         StartCoroutine(CalcCoolTime());

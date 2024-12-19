@@ -14,7 +14,8 @@ public class Bomb : Bullet
         {
             foreach (Collider2D target in targets)
             {
-
+                if (TryGetComponent(out IHittable item))
+                    item.OnHit(_bulletData.damage);
             }
         }
     }

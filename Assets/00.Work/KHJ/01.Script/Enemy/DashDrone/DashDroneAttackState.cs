@@ -37,10 +37,11 @@ public class DashDroneAttackState : EnemyState
         }
 
         var over = Physics2D.OverlapCircle(_enemy.transform.position, 0.5f, _enemy.PlayerMask);
-        if (over != null)
+        if (over)
         {
-            if (_canAttack)
+            if (_canAttack&&over.TryGetComponent(out Player target))
             {
+                target.GetCompo<PlayerHealth>().ChangeValue(-_enemy.EnemyData.damage);
                 _canAttack = false;
             }
         }
