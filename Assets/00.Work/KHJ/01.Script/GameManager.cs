@@ -11,6 +11,8 @@ public class GameManager : MonoSingleton<GameManager>
     private float _currentTime;
     private float _maxTime = 10;
 
+    private int _score;
+
     private void Start()
     {
         SaveAllData();
@@ -20,6 +22,19 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+
+    public void SetScore(int value)
+    {
+        _score += value;
+        print($"현재 스코어 : {_score}점");
+        // 스코어 UI 변경
+    }
+
+
+
+
+    
+    ////////////////////////////////////////// 적 웨이브
     private void Update()
     {
                 _currentTime += Time.deltaTime;

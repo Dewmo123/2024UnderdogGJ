@@ -18,3 +18,4 @@ MonoBehaviour:
   attackCool: 0
   attackRange: 0.8
   bullet: {fileID: 738693532238960150, guid: 7eaa2a0899dc9d14dbca51f59fc10e78, type: 3}
+  score: 1

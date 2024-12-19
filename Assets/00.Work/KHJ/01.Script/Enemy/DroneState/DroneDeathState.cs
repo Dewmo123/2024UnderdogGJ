@@ -8,6 +8,7 @@ public class DroneDeathState : EnemyState
     {
         _enemy.gameObject.layer = 0;
         _enemy.AnimCompo.PlayAnimaton(AnimationType.death);
+        GameManager.Instance.SetScore(_enemy.EnemyData.score);
         Destroy(_enemy.gameObject);
         //_enemy.AnimCompo.OnAnimationEnd.AddListener(TransitionState);
     }

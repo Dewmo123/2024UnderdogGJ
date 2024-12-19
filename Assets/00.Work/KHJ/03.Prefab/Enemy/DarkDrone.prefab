@@ -190,7 +190,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 41
   m_Sprite: {fileID: -670609786, guid: e13bb06bb98c64146b223157a186d030, type: 3}
-  m_Color: {r: 0.09433961, g: 0.07609469, b: 0.07609469, a: 1}
+  m_Color: {r: 0.8536849, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -318,7 +318,7 @@ MonoBehaviour:
   PlayerMask:
     serializedVersion: 2
     m_Bits: 64
-  EnemyData: {fileID: 11400000, guid: 4cd1f65b889990c409eb16c295ac2289, type: 2}
+  EnemyData: {fileID: 11400000, guid: 7859143ece320694d8b923794c51c02d, type: 2}
   _reFindTime: 0.5
 --- !u!61 &3110449947774074520
 BoxCollider2D:
@@ -352,7 +352,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23901701, y: -0.09472358}
+  m_Offset: {x: -0.29042506, y: -0.04987824}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -363,7 +363,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3735857, y: 0.3508494}
+  m_Size: {x: 0.6864095, y: 0.6461723}
   m_EdgeRadius: 0
 --- !u!50 &855913337910776421
 Rigidbody2D:

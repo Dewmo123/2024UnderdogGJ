@@ -6,7 +6,8 @@ public class DroneIdleState : EnemyState
 {
     protected override void EnterState() // 공격 후 쿨타임동안 가만히 있음
     {
-        _enemy.Agent.SetDestination(transform.position);
+        if (_enemy.Agent.enabled && _enemy.Agent.isOnNavMesh)
+            _enemy.Agent.SetDestination(transform.position);
         _enemy.AnimCompo.PlayAnimaton(AnimationType.idle);
         StartCoroutine(WaitAttackCool());
     }
