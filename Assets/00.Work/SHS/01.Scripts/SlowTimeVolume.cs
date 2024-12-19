@@ -9,13 +9,18 @@ public class SlowTimeVolume : MonoBehaviour
 {
     [SerializeField] Volume volume;
     [SerializeField] float duration;
+    private Coroutine coroutine;
     public void Enable()
     {
-        StartCoroutine(SetVolumeWeight(1));
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+        coroutine = StartCoroutine(SetVolumeWeight(1));
     }
     public void Disable()
     {
-        StartCoroutine(SetVolumeWeight(0));
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+        coroutine = StartCoroutine(SetVolumeWeight(0));
     }
 
     private IEnumerator SetVolumeWeight(float value)
@@ -25,6 +30,7 @@ public class SlowTimeVolume : MonoBehaviour
         while (time < duration)
         {
             time += Time.deltaTime;
+            Debug.Log(time / duration);
             volume.weight = Mathf.Lerp(startValue, value, time / duration);
             yield return null;
         }
