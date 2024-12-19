@@ -1,3 +1,4 @@
+using GGMPool;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,10 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour, ISpawnable,IHittable
 {
+    [SerializeField] private SoundSO _drone;
+    [SerializeField] private PoolManagerSO _poolManager;
+    [SerializeField] private PoolTypeSO _sp;
+
     public UnityEvent OnDeath;
     public UnityEvent OnAttack;
 
@@ -22,7 +27,7 @@ public class Enemy : MonoBehaviour, ISpawnable,IHittable
     public LayerMask PlayerMask;
     public EnemyDataSO EnemyData;
 
-
+    private SoundPlayer _soundPlayer;
 
 
     private void Awake()
@@ -44,6 +49,8 @@ public class Enemy : MonoBehaviour, ISpawnable,IHittable
 
     private void Start()
     {
+        _soundPlayer = _poolManager.Pop(_sp) as SoundPlayer;
+        _soundPlayer.PlaySound(_drone);
         SetupEnemy();
     }
 

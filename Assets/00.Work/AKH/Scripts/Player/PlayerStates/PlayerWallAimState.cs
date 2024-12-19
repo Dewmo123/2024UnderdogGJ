@@ -25,6 +25,7 @@ public class PlayerWallAimState : PlayerAimState
     }
     protected override void HandleMouseCancel()
     {
+        _player.GetCompo<BulletLine>().DisableLine();
         _stateMachine.ChangeState(PlayerEnum.WallShoot);
     }
 }

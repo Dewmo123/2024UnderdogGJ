@@ -100,6 +100,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0340c169a79514882d022bd0d3a1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6781613567221937286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5058632677462553502}
+  - component: {fileID: 9025859535294488947}
+  - component: {fileID: 5195616797185235830}
+  m_Layer: 27
+  m_Name: DeadFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5058632677462553502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6781613567221937286}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4562601215053274762}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9025859535294488947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6781613567221937286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2314139ca70270b40852adaef698d4ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5195616797185235830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6781613567221937286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9addc5904530515468d24ee032a9bedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTypeSO: {fileID: 11400000, guid: c3dda6a381beded4caf26ded12b1515f, type: 2}
+  soundSO: {fileID: 11400000, guid: 272c4875a87dc9d4eb3bc5b4e5ca0e02, type: 2}
+--- !u!1 &7704953743408147911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4562601215053274762}
+  m_Layer: 27
+  m_Name: Feedbacks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4562601215053274762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7704953743408147911}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5058632677462553502}
+  m_Father: {fileID: 4490086958069649729}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8786389219707197257
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +353,7 @@ Transform:
   m_Children:
   - {fileID: 6035231654455582929}
   - {fileID: 7594997060358410171}
+  - {fileID: 4562601215053274762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &6421075521123711793
@@ -298,9 +390,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c8ff54ad9371442be68f153f3a3482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _drone: {fileID: 11400000, guid: 2d567612ebabf9549be7445d923d2920, type: 2}
+  _poolManager: {fileID: 11400000, guid: cad995cea29e52b4cb4d0faf2b9e61c3, type: 2}
+  _sp: {fileID: 11400000, guid: c3dda6a381beded4caf26ded12b1515f, type: 2}
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9025859535294488947}
+        m_TargetAssemblyTypeName: FeedbackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedbacks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
