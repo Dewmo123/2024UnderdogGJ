@@ -1,9 +1,12 @@
+using GGMPool;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    [SerializeField] private PoolManagerSO _poolManager;
+    [SerializeField] private PoolTypeSO _poolType;
     [SerializeField] private EnemyDataListSO _enemyDataListSO;
     [SerializeField] private BulletDataListSO _bulletDataListSO;
 
@@ -16,12 +19,14 @@ public class GameManager : MonoSingleton<GameManager>
     private float _currentTime;
     private float _maxTime = 10;
 
-
+    [SerializeField] private SoundSO _bgm;
     public int score { get; private set; }
     public int killedCount { get; private set; }
 
     private void Start()
     {
+        var sp = _poolManager.Pop(_poolType) as SoundPlayer;
+        sp.PlaySound(_bgm);
         SaveAllData();
         for (int i = 0; 3 < i; i++)
         {
