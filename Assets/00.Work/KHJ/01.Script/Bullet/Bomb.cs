@@ -7,8 +7,6 @@ public class Bomb : Bullet
     [SerializeField] private LayerMask _targetLayer;
     [SerializeField] private float _range;
 
-    float _currentTimel;
-    float _destroyTime = 8;
 
     
 

@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     {
         if (TryGetComponent(out Rigidbody2D rigid))
             rigid.velocity = transform.right * _bulletData.moveSpeed;
-
+        StartCoroutine(DestroyBulletCoroutine());
     }
 
     private IEnumerator DestroyBulletCoroutine()
