@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613d7408962c1624997afae5c304116b, type: 3}
+  m_Name: SpawnTable3
+  m_EditorClassIdentifier: 
+  spawnables:
+  - percentage: 22.254612
+    color: {r: 0.32992825, g: 0.8962264, b: 0.054957304, a: 1}
+    Value: {fileID: 8846260455117423395, guid: d5052e906d8a42f4980d758483e110c9, type: 3}
+  - percentage: 45.17822
+    color: {r: 1, g: 0, b: 0, a: 1}
+    Value: {fileID: 8846260455117423395, guid: ff4f558303ac3ab49b91f480d1b0040a, type: 3}
+  - percentage: 100
+    color: {r: 0.36372995, g: 1, b: 0, a: 1}
+    Value: {fileID: 8846260455117423395, guid: 4d001ece8fa5aa84a8592c21eae25afa, type: 3}

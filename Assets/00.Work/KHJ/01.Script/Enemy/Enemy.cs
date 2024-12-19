@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, ISpawnable
 {
     public EnemyAnimation AnimCompo { get; protected set; }
     public EnemyStateFactory StateCompo { get; protected set; }
@@ -14,10 +14,8 @@ public class Enemy : MonoBehaviour
     public PlayerTest Target;
 
     public NavMeshAgent Agent { get; private set; }
-
     public LayerMask WellMask;
     public LayerMask PlayerMask;
-
     public EnemyDataSO EnemyData;
 
     [SerializeField] private float _reFindTime = 0.5f;
@@ -89,5 +87,9 @@ public class Enemy : MonoBehaviour
         {
             TakeDamage(5);
         }
+    }
+
+    public void OnSpawn(Vector2 position)
+    {
     }
 }
