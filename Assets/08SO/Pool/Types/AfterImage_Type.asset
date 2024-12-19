@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f045815d54932a429691eb793ad8783, type: 3}
-  m_Name: New Pool Manager SO
+  m_Script: {fileID: 11500000, guid: 317ebf221effd784cbbcd79a9c8894f7, type: 3}
+  m_Name: AfterImage_Type
   m_EditorClassIdentifier: 
-  poolingItemList:
-  - {fileID: 11400000, guid: 186044b71d36afb4ba8f19014cd28bcd, type: 2}
-  - {fileID: 11400000, guid: f9f9fce359bcc9d4b825c697c0b21c7b, type: 2}
-  _rootTrm: {fileID: 0}
+  typeName: AfterImage

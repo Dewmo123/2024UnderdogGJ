@@ -48,9 +48,8 @@ public class PlayerSniper : MonoBehaviour, IPlayerComponent
         RaycastHit2D[] ray = Physics2D.RaycastAll(firePoint.position, dir, shootDistance, enemyLayer);
         foreach (var item in ray)
         {
-            Debug.Log("hit");
-            if (item.collider.TryGetComponent<IHittable>(out var hitable))
-                hitable.OnHit(1);
+            if (item.collider.TryGetComponent<IPlayerSniperHitable>(out var hitable))
+                hitable.OnHit();
         }
 
         StartCoroutine(CalcCoolTime());

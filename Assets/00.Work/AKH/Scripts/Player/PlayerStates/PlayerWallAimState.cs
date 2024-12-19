@@ -13,7 +13,7 @@ public class PlayerWallAimState : PlayerAimState
         if (_player.GetCompo<PlayerMovement>().isWall)
             _player.GetCompo<PlayerMovement>().HandleSpriteFlip(_player.transform.position + (_player.GetCompo<PlayerMovement>().IsFacingRight() ? Vector3.left : Vector3.right));
         _player.GetCompo<PlayerAnimator>().ChangeLayer(2);
-        _player.Rigid.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+        _player.Rigid.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePosition;
     }
     public override void Exit()
     {
